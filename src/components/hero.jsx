@@ -3,9 +3,10 @@ import HeroGourd from "@/components/heroGourd";
 
 const Hero = () => {
   return (
-    // only the bottom corners are rounded so the hero joins the nav above it
+    // only the bottom corners are rounded so the hero joins the nav above it.
+    // No id="top" on purpose: when no element has that id, the browser sends "#top" links
+    // to the very top of the page, so the nav and hero look the same as on first load.
     <div
-      id="top"
       className="card-section relative overflow-hidden rounded-b-[20px] bg-cream"
     >
       {/* GRID: text | gourd on desktop, stacked at ≤860px; items sit on the bottom edge */}
