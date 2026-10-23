@@ -63,6 +63,16 @@
 		scroll-margin-top: 7rem;
 	}
 
+	/* yellow strip above the sticky nav so page content doesn't show through the gap */
+	body::before {
+		content: "";
+		position: fixed;
+		inset: 0 0 auto;
+		height: calc(env(safe-area-inset-top, 0px) + 10px);
+		z-index: 10;
+		background: var(--color-bg);
+	}
+
 	a:focus-visible,
 	button:focus-visible {
 		outline: 2px solid var(--color-accent);
@@ -75,5 +85,20 @@
 	/* Section cards: content stays max 1080px wide while the card itself is up to 1240px */
 	.card-section {
 		padding-inline: max(var(--inner), calc((100% - 1080px) / 2));
+	}
+
+	/* active nav link (set by the scroll-spy in navbar.jsx): green text + underline */
+	.nav-link.active {
+		color: var(--color-cta);
+	}
+	.nav-link.active::after {
+		content: "";
+		position: absolute;
+		left: 12px;
+		right: 12px;
+		bottom: 2px;
+		height: 2px;
+		border-radius: 2px;
+		background: var(--color-cta);
 	}
 }
