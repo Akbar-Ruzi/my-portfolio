@@ -1,1 +1,79 @@
 @import "tailwindcss";
+
+/* Design tokens from design/wolfdev-portfolio.html */
+@theme {
+	--color-bg: #EDB33C;
+	--color-panel: #FFFFFF;
+	--color-surface: #F8F6F0;
+	--color-cream: #F5F2E9;
+	--color-fg: #0F1A2E;
+	--color-muted: #2E3A4F;
+	--color-line: #DCE2EC;
+	--color-accent: #1F4FD1;
+	--color-accent-soft: #E3EAFB;
+	--color-cta: #29695C;
+
+	--font-display: var(--nf-display), "Segoe UI", system-ui, sans-serif;
+	--font-body: var(--nf-body), "Segoe UI", system-ui, sans-serif;
+	--font-mono: var(--nf-mono), ui-monospace, Menlo, Consolas, monospace;
+}
+
+/* Custom CSS lives in layers so Tailwind utilities can still override it */
+@layer base {
+	:root {
+		/* gap around the cards / inner padding of each card */
+		--outer: clamp(16px, 4vw, 48px);
+		--inner: clamp(16px, 4vw, 56px);
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+		*,
+		*::before,
+		*::after {
+			transition: none !important;
+		}
+	}
+
+	body {
+		background: var(--color-bg);
+		color: var(--color-fg);
+		font: 16px/1.6 var(--font-body);
+		padding-block: var(--outer);
+		padding-left: max(var(--outer), env(safe-area-inset-left, 0px));
+		padding-right: max(var(--outer), env(safe-area-inset-right, 0px));
+	}
+
+	h1,
+	h2,
+	h3 {
+		font-family: var(--font-display);
+		text-wrap: balance;
+		line-height: 1.1;
+	}
+
+	/* keep section headings clear of the sticky nav when jumping to an anchor */
+	section[id] {
+		scroll-margin-top: 7rem;
+	}
+
+	a:focus-visible,
+	button:focus-visible {
+		outline: 2px solid var(--color-accent);
+		outline-offset: 3px;
+		border-radius: 4px;
+	}
+}
+
+@layer components {
+	/* Section cards: content stays max 1080px wide while the card itself is up to 1240px */
+	.card-section {
+		padding-inline: max(var(--inner), calc((100% - 1080px) / 2));
+	}
+}
