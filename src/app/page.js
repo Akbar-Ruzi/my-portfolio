@@ -1,4 +1,5 @@
 import Navbar from "@/components/navbar";
+import Hero from "@/components/hero";
 
 // Temporary skeleton: each placeholder is replaced by its real component in Steps 4–10 of the plan
 const sections = [
@@ -12,10 +13,7 @@ const Homepage = () => {
 	return (
 		<div className="mx-auto flex max-w-[1240px] flex-col gap-[var(--outer)]">
 			<Navbar />
-			{/* HERO (Step 5): only the bottom corners are rounded so it joins the nav above */}
-			<div id="top" className="card-section rounded-b-[20px] bg-cream py-12">
-				<h1 className="text-[clamp(40px,7vw,76px)] font-extrabold">Wolf.dev</h1>
-			</div>
+			<Hero />
 			<main className="flex flex-col gap-[var(--outer)]">
 				{sections.map((section) => (
 					<section key={section.id} id={section.id} className={`card-section rounded-[20px] py-14 ${section.bg}`}>
