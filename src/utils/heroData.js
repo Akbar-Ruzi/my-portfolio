@@ -1,6 +1,6 @@
 // Hero copy (rendered by components/hero.jsx)
 const heroData = {
-	label: "Front-end & AI Developer",
+	roles: ["Front-End", "Full-Stack", "Applied AI"], // shown in the hero badge, separated by ·
 	greeting: "Hey There,",
 	name: "Akbar",
 	desc: "I build fast, polished front ends with JavaScript, React and TypeScript, and add AI-powered features with Python and FastAPI when a project needs it.",

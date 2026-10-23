@@ -1,28 +1,26 @@
+// About section copy (rendered by components/about.jsx).
+// Wrap words in **double asterisks** to show them in bold.
 const summaryData = {
-	title: 'SUMMARY',
+	title: 'About Me',
 	desc: [
 		{
-			p: 'Front-end developer experienced in building scalable, high-performance web applications using React, Next.js, JavaScript, TypeScript, Vue, Angular, HTML5, CSS3, and Tailwind CSS.',
+			p: "I'm a **Software Engineer with 8+ years of experience** specializing in front-end development using **React, Next.js, and TypeScript**. I focus on building high-performance, accessible, and maintainable web applications.",
 			id: 'p1'
 		},
 		{
-			p: 'Specialized in custom UI components, responsive design, and performance optimization across browsers.',
+			p: "My full-stack capabilities include developing RESTful APIs and backend services with **Python, FastAPI, Node.js, MySQL, MongoDB, and PostgreSQL**, along with practical experience in Docker, data pipelines, telemetry, and asynchronous processing.",
 			id: 'p2'
 		},
 		{
-			p: 'Skilled in Node.js and Express.js for backend APIs and server-side logic, with solid knowledge of Java.',
+			p: "I'm expanding into **AI Application Development**, focusing on LLM integration, RAG, AI agents, and intelligent workflows to build real-world AI-powered applications.",
 			id: 'p3'
 		},
 		{
-			p:'Strong Salesforce background: Administration, Apex, SOQL, DML, Triggers, and LWC',
-			id:'p4'
-		},
-		{
-			p:'Collaborative team player with mentoring experience; passionate about clean code, innovation, and continuous learning.',
-			id:'p5'
+			p: "Based in **Maryland**, I'm open to remote, hybrid, and on-site opportunities in front-end, full-stack, and AI application development.",
+			id: 'p4'
 		}
 	],
-	quote: 'Code is logic. UI is emotion. I blend both to tell digital stories.'
+	certifications: ['Salesforce Certified Administrator']
 }
 
 export default summaryData;

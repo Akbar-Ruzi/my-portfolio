@@ -8,11 +8,15 @@ const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variab
 export const metadata = {
 	title: "Wolf.dev · Akbar Ruzi",
 	description: "Akbar Ruzi, front-end and AI developer.",
+	// Stop iOS Safari from turning addresses/numbers (e.g. a city or phone number) into links
+	formatDetection: { telephone: false, address: false, email: false, date: false },
 };
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
+		// suppressHydrationWarning: some browsers (e.g. Chrome on iPhone) add attributes to <html> before
+		// React loads; this ignores attribute differences on this one tag only, not on its children
+		<html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`} suppressHydrationWarning>
 			<body>{children}</body>
 		</html>
 	);

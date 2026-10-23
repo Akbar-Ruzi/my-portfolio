@@ -42,7 +42,6 @@ yarn-error.log*
 next-env.d.ts
 # Ignore specific component files
 src/utils/jobs.js
-src/utils/skillSet.js
 # Local design references and notes (not committed)
 design/
 plan.md
