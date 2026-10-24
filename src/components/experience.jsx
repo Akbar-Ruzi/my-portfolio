@@ -1,69 +1,69 @@
-"use client";
-import { useRef } from "react";
-import { useInView } from "framer-motion";
-import { motion } from "framer-motion";
-import jobs from "@/utils/jobs";
-import JobCard from "./jobCard";
-import useIsMobile from "@/hooks/useIsMobile";
+import experiences from "@/utils/experiences";
+import withBold from "@/utils/withBold";
 
 const Experience = () => {
-  const experienceRef = useRef();
-  const isInView = useInView(experienceRef, { margin: "-100px" });
-  const isMobile = useIsMobile();
-
-  const animateFromLeft = {
-    initial: { x: "-300px" },
-    animate: isInView ? { x: "0" } : {},
-    transition: { delay: 0.2 },
-  };
-
-  if (isMobile) {
-    // Mobile: render stacked JobCards only
-    return (
-      <div className="flex flex-col gap-6" ref={experienceRef}>
-        <motion.h1 {...animateFromLeft} className="font-bold text-2xl">
-          EXPERIENCE
-        </motion.h1>
-        {jobs.map((job, index) => (
-          <JobCard key={index} job={job} isMobile={isMobile} />
-        ))}
-      </div>
-    );
-  }
-
   return (
-    <div
-      className="flex flex-col gap-12 justify-center pb-48"
-      ref={experienceRef}
+    <section
+      id="experience"
+      aria-labelledby="xp-h"
+      className="card-section rounded-[20px] bg-cream py-14"
     >
-      {/* EXPERIENCE TITLE */}
-      <motion.h1 {...animateFromLeft} className="font-bold text-2xl">
-        EXPERIENCE
-      </motion.h1>
-      {/* Timeline */}
-      <motion.div {...animateFromLeft} className="">
-        {jobs.map((job, index) => (
-          <div key={index} className=" flex h-52">
-            {/* LEFT */}
-            <div className="flex-1 pr-4">
-              {index % 2 === 0 && <JobCard job={job} />}
+      <h2 id="xp-h" className="mb-7 text-[clamp(28px,4vw,38px)]">
+        Experience
+      </h2>
+      {/* TIMELINE, three layouts:
+          - desktop (≥1024px): grid [org + date] [line + dot] [role + details]
+          - tablet (640–1023px): the line moves to the left, org/role stack beside it
+          - phone (<640px): no line; each entry is a white card on the cream section
+          (max-sm: rules come after max-lg: in Tailwind's CSS, so on phones they win) */}
+      <ol className="grid max-sm:gap-3">
+        {experiences.map((item) => (
+          <li
+            key={item.id}
+            style={{ "--dot": item.dot }}
+            className="grid grid-cols-[minmax(0,260px)_48px_minmax(0,1fr)] gap-x-5 max-lg:grid-cols-[36px_minmax(0,1fr)] max-lg:gap-x-3.5 max-sm:grid-cols-1 max-sm:rounded-2xl max-sm:bg-panel max-sm:p-5"
+          >
+            {/* ORG + DATE */}
+            <div className="pt-1 pb-8 max-lg:col-start-2 max-lg:row-start-1 max-lg:pb-1.5 max-sm:col-start-1 max-sm:p-0">
+              <h3 className="font-display text-xl leading-[1.3] font-semibold">
+                {item.org}
+              </h3>
+              <span className="mt-1.5 block font-mono text-sm text-muted tabular-nums">
+                {item.when}
+              </span>
             </div>
-            {/* CENTER */}
-            <div className="w-8 flex justify-center">
-              {/* LINE */}
-              <div className="w-1 h-full bg-gray-600 rounded relative">
-                {/* LINE CIRCLE */}
-                <div className="absolute w-5 h-5 rounded-full ring-4 ring-red-400 bg-white -left-2"></div>
-              </div>
+            {/* LINE: dashed ring with the colored dot, then a dashed line down to the next entry (hidden on phones) */}
+            <div
+              aria-hidden="true"
+              className="flex flex-col items-center max-lg:col-start-1 max-lg:row-span-2 max-lg:row-start-1 max-sm:hidden"
+            >
+              <span className="grid size-[30px] flex-none place-items-center rounded-full border-[1.5px] border-dashed border-muted">
+                <span className="size-4 rounded-full bg-[var(--dot)]" />
+              </span>
+              <span className="mt-1 w-0 flex-1 border-l-[1.5px] border-dashed border-muted opacity-70" />
             </div>
-            {/* RIGHT */}
-            <div className="flex-1 pl-4">
-              {index % 2 !== 0 && <JobCard job={job} />}
+            {/* ROLE + DETAILS: a bullet list, or one paragraph (summary) */}
+            <div className="min-w-0 pt-1 pb-8 max-lg:col-start-2 max-lg:row-start-2 max-sm:col-start-1 max-sm:pt-3 max-sm:pb-0">
+              {/* below 1024px org and role sit in one column, so the role is smaller to tell them apart */}
+              <h3 className="font-display text-xl leading-[1.3] font-semibold max-lg:text-base">
+                {item.role}
+              </h3>
+              {item.bullets ? (
+                <ul className="mt-2 grid max-w-[62ch] list-disc gap-1.5 pl-[18px] leading-[1.7] text-muted">
+                  {item.bullets.map((bullet) => (
+                    <li key={bullet}>{withBold(bullet)}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="mt-2 max-w-[60ch] leading-[1.8] text-muted">
+                  {withBold(item.summary)}
+                </p>
+              )}
             </div>
-          </div>
+          </li>
         ))}
-      </motion.div>
-    </div>
+      </ol>
+    </section>
   );
 };
 

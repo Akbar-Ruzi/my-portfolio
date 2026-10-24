@@ -4,7 +4,7 @@ const summaryData = {
 	title: 'About Me',
 	desc: [
 		{
-			p: "I'm a **Software Engineer with 8+ years of experience** specializing in front-end development using **React, Next.js, and TypeScript**. I focus on building high-performance, accessible, and maintainable web applications.",
+			p: "I'm a **Software Engineer with 7+ years of experience** specializing in front-end development using **React, Next.js, and TypeScript**. I focus on building high-performance, accessible, and maintainable web applications.",
 			id: 'p1'
 		},
 		{
