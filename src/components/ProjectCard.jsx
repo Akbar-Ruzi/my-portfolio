@@ -1,7 +1,9 @@
 import Dialog from "@/components/Dialog";
 
-const demoClass = "rounded-full bg-cta px-3.5 py-2 text-white hover:brightness-110";
-const codeClass = "text-accent hover:underline";
+// below 1024px (tablet + phone) both links become equal-width pills that fill the row
+const demoClass = "rounded-full bg-cta px-3.5 py-2 text-center text-white hover:brightness-110";
+const codeClass =
+  "text-center text-accent hover:underline max-lg:rounded-full max-lg:border max-lg:border-accent max-lg:px-3.5 max-lg:py-2 max-lg:hover:bg-accent-soft max-lg:hover:no-underline";
 
 const ProjectCard = ({ project }) => {
   return (
@@ -24,7 +26,7 @@ const ProjectCard = ({ project }) => {
       </ul>
       {/* LINKS: pushed to the bottom so they line up across a row.
           An empty url shows the same button, which opens the "not ready yet" dialog instead. */}
-      <div className="mt-auto flex items-center gap-4 pt-2 text-sm font-semibold">
+      <div className="mt-auto flex items-center gap-4 pt-2 text-sm font-semibold max-lg:grid max-lg:grid-cols-2 max-lg:gap-3">
         {project.demo ? (
           <a href={project.demo} target="_blank" rel="noopener" className={demoClass}>
             Live demo ↗
