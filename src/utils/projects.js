@@ -1,36 +1,58 @@
+// "What I've Built" cards (rendered by components/projects.jsx), in display order.
+// kind: small label above the title. tags: tech chips.
+// desc: keep it to about 3 lines on the card (~170 characters).
+// demo / code: links; leave "" when there is none (the button then opens a "not ready yet" dialog).
 const projects = [
 	{
-		id: 1,
-		color: "from-red-300 to-blue-300",
-		title: "React Commerce",
-		desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-		img: "https://images.pexels.com/photos/18073372/pexels-photo-18073372/free-photo-of-young-man-sitting-in-a-car-on-a-night-street.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-		link: "https://www.google.com/",
+		id: "talent-pipeline-tracker",
+		kind: "Full-stack app",
+		title: "Talent Pipeline Tracker",
+		desc: "A recruitment dashboard that replaced a shared spreadsheet: search and filter candidates, update their stage, and manage interview notes, with every API response validated.",
+		tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "REST API"],
+		demo: "",
+		// repo (not public yet): https://github.com/Akbar-Ruzi/ai-engineering-company-project-monorepo/tree/feature/talent-pipeline-tracker/uis/talent-pipeline-tracker
+		code: "",
 	},
 	{
-		id: 2,
-		color: "from-blue-300 to-violet-300",
-		title: "Next.js Medium Blog",
-		desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-		img: "https://images.pexels.com/photos/18023772/pexels-photo-18023772/free-photo-of-close-up-of-a-person-holding-a-wristwatch.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-		link: "https://www.google.com/",
+		id: "voice-command-api",
+		kind: "AI-powered app",
+		title: "Voice Command API",
+		desc: "A FastAPI service that turns speech into actions: Whisper transcribes the audio and an LLM converts it into a structured API call on a task list. I built the backend.",
+		tags: ["Python", "FastAPI", "LLM", "Whisper", "Groq", "Pydantic"],
+		demo: "",
+		// repo (not public yet): https://github.com/Akbar-Rouzi/voice-command-api
+		code: "",
 	},
 	{
-		id: 3,
-		color: "from-violet-300 to-purple-300",
-		title: "Vanilla Book App",
-		desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-		img: "https://images.pexels.com/photos/6894528/pexels-photo-6894528.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-		link: "https://www.google.com/",
+		id: "healthcore-public-website",
+		kind: "Public website",
+		title: "HealthCore Public Website",
+		desc: "A bilingual (English/Spanish) healthcare website with a filterable clinic directory and a validated enquiry form, scoring 91 to 100 in every Lighthouse category.",
+		tags: ["HTML5", "Tailwind CSS", "JavaScript", "i18n", "SEO", "Accessibility"],
+		demo: "",
+		// repo (not public yet): https://github.com/Akbar-Rouzi/healthcore-public-website/tree/main/uis/website
+		code: "",
 	},
 	{
-		id: 4,
-		color: "from-purple-300 to-red-300",
-		title: "Spotify Music App",
-		desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-		img: "https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-		link: "https://www.google.com/",
-	}
+		id: "event-hub",
+		kind: "Full-stack app",
+		title: "Event Hub",
+		desc: "An event creation and booking app with responsive listing pages, NextAuth sign-in, and MongoDB storage for events and bookings.",
+		tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "NextAuth", "MongoDB"],
+		// TODO: find the repo URL (none saved yet)
+		demo: "",
+		code: "",
+	},
+	{
+		id: "wanderlust-explorer",
+		kind: "Front-end app",
+		title: "Wanderlust Explorer",
+		desc: "A travel discovery app with 100 curated experiences: search and filters synced to the URL, a detail page for each one, and favorites that persist across sessions.",
+		tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+		demo: "",
+		// repo (not public yet): https://github.com/4GeeksAcademy/Akbar-Rouzi-nextjs-wanderlust-explorer
+		code: "",
+	},
 ];
 
 export default projects;

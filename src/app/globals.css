@@ -30,6 +30,11 @@
 		scroll-behavior: smooth;
 	}
 
+	/* no page scroll behind an open modal (components/dialog.jsx) */
+	html:has(dialog[open]) {
+		overflow: hidden;
+	}
+
 	@media (prefers-reduced-motion: reduce) {
 		html {
 			scroll-behavior: auto;
