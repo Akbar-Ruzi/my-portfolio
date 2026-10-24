@@ -1,17 +1,6 @@
 import summaryData from "@/utils/summaryData";
 import skillSet from "@/utils/skillSet";
-
-// "a **b** c" → ["a ", <strong>b</strong>, " c"]: every odd piece after splitting on ** was inside the asterisks
-const withBold = (text) =>
-  text.split("**").map((part, i) =>
-    i % 2 ? (
-      <strong key={i} className="font-semibold">
-        {part}
-      </strong>
-    ) : (
-      part
-    )
-  );
+import withBold from "@/utils/withBold";
 
 const About = () => {
   return (
