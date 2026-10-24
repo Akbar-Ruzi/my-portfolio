@@ -1,4 +1,4 @@
-// Turns **double asterisks** in data text into <strong> (used by about.jsx and experience.jsx).
+// Turns **double asterisks** in data text into <strong> (used by About.jsx and Experience.jsx).
 // "a **b** c" → ["a ", <strong>b</strong>, " c"]: every odd piece after splitting on ** was inside the asterisks.
 // text-fg keeps bold words dark even inside muted text.
 const withBold = (text) =>

@@ -1,5 +1,5 @@
 import heroData from "@/utils/heroData";
-import HeroGourd from "@/components/heroGourd";
+import HeroGourd from "@/components/HeroGourd";
 
 const Hero = () => {
   return (

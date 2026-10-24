@@ -1,4 +1,4 @@
-// Skill groups for the About section (rendered by components/about.jsx).
+// Skill groups for the About section (rendered by components/About.jsx).
 // highlight: true shows that group's pills in accent blue.
 const skillSet = [
   {

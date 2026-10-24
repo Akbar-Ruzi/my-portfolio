@@ -30,7 +30,7 @@
 		scroll-behavior: smooth;
 	}
 
-	/* no page scroll behind an open modal (components/dialog.jsx) */
+	/* no page scroll behind an open modal (components/Dialog.jsx) */
 	html:has(dialog[open]) {
 		overflow: hidden;
 	}
@@ -92,7 +92,7 @@
 		padding-inline: max(var(--inner), calc((100% - 1080px) / 2));
 	}
 
-	/* active nav link (set by the scroll-spy in navbar.jsx): green text + underline */
+	/* active nav link (set by the scroll-spy in Navbar.jsx): green text + underline */
 	.nav-link.active {
 		color: var(--color-cta);
 	}

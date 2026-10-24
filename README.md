@@ -27,7 +27,7 @@ The Experience timeline reads from `src/utils/experiences.js`. That file holds p
 After cloning, create `src/utils/experiences.js` yourself, or `npm run dev` / `npm run build` will fail with "Module not found: Can't resolve '@/utils/experiences'". Start from this mock data:
 
 ```js
-// Experience timeline, newest first (rendered by components/experience.jsx).
+// Experience timeline, newest first (rendered by components/Experience.jsx).
 // Each entry has either `bullets` (a list) or `summary` (one paragraph).
 // Wrap words in **double asterisks** to show them in bold.
 // dot: timeline dot color; the design cycles green, orange, yellow.

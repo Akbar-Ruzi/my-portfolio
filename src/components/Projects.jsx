@@ -1,5 +1,5 @@
 import projects from "@/utils/projects";
-import ProjectCard from "@/components/projectCard";
+import ProjectCard from "@/components/ProjectCard";
 
 const Projects = () => {
   return (

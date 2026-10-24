@@ -1,4 +1,4 @@
-import Dialog from "@/components/dialog";
+import Dialog from "@/components/Dialog";
 
 const demoClass = "rounded-full bg-cta px-3.5 py-2 text-white hover:brightness-110";
 const codeClass = "text-accent hover:underline";

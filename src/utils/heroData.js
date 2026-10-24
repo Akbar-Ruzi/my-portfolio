@@ -1,4 +1,4 @@
-// Hero copy (rendered by components/hero.jsx)
+// Hero copy (rendered by components/Hero.jsx)
 const heroData = {
 	roles: ["Front-End", "Full-Stack", "Applied AI"], // shown in the hero badge, separated by ·
 	greeting: "Hey There,",
