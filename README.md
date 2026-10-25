@@ -1,24 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Wolf.dev Portfolio
 
-## Getting Started
+Akbar Ruzi's personal portfolio: a single-page site with Hero, About, Experience, What I've Built (projects) and Contact sections. It is built with Next.js and exported as a static site.
 
-First, run the development server:
+## Tech stack
+
+- [Next.js](https://nextjs.org) 15 (App Router, static export) and React 19, in plain JavaScript
+- [Tailwind CSS](https://tailwindcss.com) 4, plus custom styles in `src/app/globals.css`
+- [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) with Bricolage Grotesque, Instrument Sans and JetBrains Mono
+- [EmailJS](https://www.emailjs.com) (`@emailjs/browser`) for the contact form
+
+## Getting started
 
 ```bash
+npm install
+cp .env.example .env              # then fill in the EmailJS ids (see "Contact form setup")
+# create src/utils/experiences.js (see "Experience data")
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+| Script | What it does |
+|---|---|
+| `npm run dev` | Starts the dev server (Turbopack) with hot reload. |
+| `npm run lint` | Runs ESLint. |
+| `npm run build` | Builds the static site into `out/`. Stop `npm run dev` first, because both write to `.next`. |
+| `npm run start` | Not used: with `output: 'export'`, serve `out/` with any static server instead. |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
+
+```
+src/
+  app/          layout.js (fonts, metadata), page.js (puts the sections together), globals.css
+  components/   one PascalCase .jsx file per section or piece (Navbar, Hero, About, Experience, Projects, Contact, ...)
+  utils/        the content each section renders (heroData.js, projects.js, contactData.js, ...)
+```
+
+Most text changes happen in `src/utils/`, not in the components.
 
 ## Experience data (`src/utils/experiences.js`)
 
@@ -70,17 +88,41 @@ Fields:
 | `bullets` | one of these two | Array of strings, shown as a bullet list. |
 | `summary` | one of these two | One paragraph, for entries that combine several short roles. |
 
-## Learn More
+## Contact form setup (EmailJS)
 
-To learn more about Next.js, take a look at the following resources:
+The contact form (`src/components/Contact.jsx`) sends messages with [EmailJS](https://www.emailjs.com) through the `@emailjs/browser` package, so no backend is needed. It reads three ids from environment variables. Without them, the form shows its error message instead of sending.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Account:** sign up at [emailjs.com](https://www.emailjs.com) and open the [dashboard](https://dashboard.emailjs.com).
+2. **Service ID:** go to **Email Services** → **Add New Service**, pick your provider (e.g. Gmail), connect the inbox that should receive messages, and click **Create Service**. Copy its **Service ID**.
+3. **Template ID:** go to **Email Templates** → **Create New Template**. The variable names must match the form's field names exactly:
+   - **Subject:** `{{subject}}`
+   - **Content:**
+     ```
+     From: {{user_email}}
+     Subject: {{subject}}
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+     {{user_message}}
+     ```
+   - **To Email:** your own address
+   - **Reply To:** `{{user_email}}`
 
-## Deploy on Vercel
+   Save, then copy the **Template ID** from the template's **Settings** tab.
+4. **Public Key:** go to **Account** → **General** and copy the **Public Key**.
+5. **`.env`:** copy `.env.example` to `.env` in the project root and replace the placeholders:
+   ```bash
+   NEXT_PUBLIC_SERVICE_ID=your_service_id
+   NEXT_PUBLIC_TEMPLATE_ID=your_template_id
+   NEXT_PUBLIC_PUBLIC_KEY=your_public_key
+   ```
+   Restart `npm run dev` afterwards, because Next.js only reads `.env` at startup. `.env` is gitignored, so never commit real values.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Deploying:** `.env` is not uploaded, so add the same three variables in your host's environment settings (e.g. Vercel → Project → Settings → Environment Variables) and redeploy. Optionally, restrict the key to your domain under **Account** → **Security** in EmailJS.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploying
+
+`next.config.mjs` sets `output: 'export'`, so `npm run build` creates a fully static site in `out/` that any static host can serve (Vercel, Netlify, GitHub Pages, ...).
+
+Before building on a host:
+
+- Add the three `NEXT_PUBLIC_` EmailJS variables in the host's settings. They are inlined at build time, so rebuild after changing them.
+- Provide `src/utils/experiences.js`. It is gitignored, so a build from the repository alone fails without it.
