@@ -7,7 +7,7 @@ const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variab
 
 export const metadata = {
 	title: "Magic Gourd · Akbar Ruzi",
-	description: "Akbar Ruzi, front-end and AI developer.",
+	description: "Akbar Ruzi, software engineer: front-end, full-stack and applied AI.",
 	// Stop iOS Safari from turning addresses/numbers (e.g. a city or phone number) into links
 	formatDetection: { telephone: false, address: false, email: false, date: false },
 };
