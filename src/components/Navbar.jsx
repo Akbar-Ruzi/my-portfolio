@@ -70,7 +70,7 @@ const Navbar = () => {
           href="#top"
           className="font-display text-xl leading-none font-extrabold"
         >
-          Wolf<span className="text-accent">.dev</span>
+          Magic <span className="text-accent">Gourd</span>
         </a>
         {/* LINKS */}
         <ul className="flex flex-wrap gap-1 max-[640px]:order-3 max-[640px]:w-full max-[640px]:justify-center">

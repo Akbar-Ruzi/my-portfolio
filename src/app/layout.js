@@ -6,7 +6,7 @@ const body = Instrument_Sans({ subsets: ["latin"], weight: ["400", "500", "600"]
 const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--nf-mono" });
 
 export const metadata = {
-	title: "Wolf.dev · Akbar Ruzi",
+	title: "Magic Gourd · Akbar Ruzi",
 	description: "Akbar Ruzi, front-end and AI developer.",
 	// Stop iOS Safari from turning addresses/numbers (e.g. a city or phone number) into links
 	formatDetection: { telephone: false, address: false, email: false, date: false },

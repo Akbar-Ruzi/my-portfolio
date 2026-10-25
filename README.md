@@ -1,4 +1,4 @@
-# Wolf.dev Portfolio
+# Magic Gourd Portfolio
 
 Akbar Ruzi's personal portfolio: a single-page site with Hero, About, Experience, What I've Built (projects) and Contact sections. It is built with Next.js and exported as a static site.
 

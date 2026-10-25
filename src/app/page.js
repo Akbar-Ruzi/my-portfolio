@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 const Homepage = () => {
 	return (
@@ -16,7 +17,7 @@ const Homepage = () => {
 				<Projects />
 				<Contact />
 			</main>
-			{/* FOOTER (Step 10) */}
+			<Footer />
 		</div>
 	);
 };
