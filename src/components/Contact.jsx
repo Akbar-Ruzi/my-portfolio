@@ -107,6 +107,7 @@ const Contact = () => {
         onInput: handleInput,
         "aria-invalid": errors[name] || undefined,
         "aria-describedby": errors[name] ? `e-${name}` : undefined,
+        suppressHydrationWarning: true, // Chrome on iOS adds an autofill attribute (__gcruniqueid) before React loads
       })}
       {errors[name] && (
         <small id={`e-${name}`} className="text-[13px] text-[#B3360B]">
@@ -153,6 +154,7 @@ const Contact = () => {
         <form
           ref={formRef}
           noValidate
+          suppressHydrationWarning // Chrome on iOS adds __gcruniqueid here too (see the field helper)
           onSubmit={handleSubmit}
           className="grid min-w-0 gap-[18px] rounded-[20px] border border-line bg-panel p-[clamp(22px,4vw,36px)] shadow-[0_24px_50px_-24px_rgba(15,26,46,.30)] max-sm:border-0 max-sm:p-0 max-sm:shadow-none"
         >
@@ -192,6 +194,7 @@ const Contact = () => {
           <input
             type="text"
             name="_gotcha"
+            suppressHydrationWarning
             tabIndex={-1}
             autoComplete="off"
             aria-hidden="true"
