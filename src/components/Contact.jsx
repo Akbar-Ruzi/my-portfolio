@@ -123,9 +123,9 @@ const Contact = () => {
       aria-labelledby="contact-h"
       className="card-section rounded-[20px] bg-panel py-14"
     >
-      {/* GRID: intro | form card, stacked at ≤760px. Below 640px the outer box and the form card
+      {/* GRID: intro | form card, stacked below 1024px (tablets got two cramped columns). Below 640px the outer box and the form card
           drop their border, background and padding so the form uses the full width */}
-      <div className="grid grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] gap-[clamp(24px,5vw,56px)] rounded-2xl border border-line bg-surface p-[clamp(24px,5vw,48px)] max-[760px]:grid-cols-1 max-sm:border-0 max-sm:bg-transparent max-sm:p-0">
+      <div className="grid grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] gap-[clamp(24px,5vw,56px)] rounded-2xl border border-line bg-surface p-[clamp(24px,5vw,48px)] max-lg:grid-cols-1 max-sm:border-0 max-sm:bg-transparent max-sm:p-0">
         {/* INTRO */}
         <div className="grid content-start gap-[18px]">
           <span className="font-mono text-xs leading-none tracking-[0.08em] text-muted uppercase">
