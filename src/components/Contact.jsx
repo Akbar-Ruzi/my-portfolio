@@ -134,15 +134,15 @@ const Contact = () => {
             {contactData.title}
           </h2>
           <p className="max-w-[45ch] text-muted">{contactData.desc}</p>
-          {/* SOCIAL PILLS */}
-          <div className="flex flex-wrap gap-3">
+          {/* SOCIAL PILLS: below 640px they split the full row 50/50 and get a bit smaller */}
+          <div className="flex flex-wrap gap-3 max-sm:grid max-sm:grid-cols-2">
             {socials.map((social) => (
               <a
                 key={social.name}
                 href={social.url}
                 target="_blank"
                 rel="noopener"
-                className={`inline-flex items-center rounded-full px-5 py-3 font-semibold text-white hover:brightness-115 ${social.bg}`}
+                className={`inline-flex items-center justify-center rounded-full px-5 py-3 font-semibold text-white hover:brightness-115 max-sm:px-4 max-sm:py-2.5 max-sm:text-[15px] ${social.bg}`}
               >
                 {social.name} ↗
               </a>
