@@ -145,7 +145,9 @@ const Contact = () => {
                 rel="noopener"
                 className={`inline-flex items-center justify-center rounded-full px-5 py-3 font-semibold text-white hover:brightness-115 max-sm:px-4 max-sm:py-2.5 max-sm:text-[15px] ${social.bg}`}
               >
-                {social.name} ↗
+                {social.name}
+                <span aria-hidden="true">&nbsp;↗</span>
+                <span className="sr-only"> (opens in a new tab)</span>
               </a>
             ))}
           </div>
@@ -224,7 +226,7 @@ const Contact = () => {
               role="status"
               className={`w-full text-center text-sm transition duration-300 empty:hidden starting:translate-y-1 starting:opacity-0 ${statusClass[status] || ""}`}
             >
-              {status && statusIcon[status]}
+              {statusIcon[status] && <span aria-hidden="true">{statusIcon[status]}</span>}
               {status && form.status[status]}
             </p>
           </div>

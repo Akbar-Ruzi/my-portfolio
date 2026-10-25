@@ -5,7 +5,19 @@ const demoClass = "rounded-full bg-cta px-3.5 py-2 text-center text-white hover:
 const codeClass =
   "text-center text-accent hover:underline max-lg:rounded-full max-lg:border max-lg:border-accent max-lg:px-3.5 max-lg:py-2 max-lg:hover:bg-accent-soft max-lg:hover:no-underline";
 
+// screen readers hear "Live demo for Event Hub" instead of five identical "Live demo" links;
+// the ↗ is hidden from them, and real links also say they open a new tab
+const NewTab = () => <span className="sr-only"> (opens in a new tab)</span>;
+
 const ProjectCard = ({ project }) => {
+  const label = (text) => (
+    <>
+      {text}
+      <span className="sr-only"> for {project.title}</span>
+      <span aria-hidden="true"> ↗</span>
+    </>
+  );
+
   return (
     <article className="flex min-w-0 flex-col gap-3 rounded-xl border border-line bg-surface p-6">
       <span className="self-start font-mono text-xs leading-none tracking-[0.08em] text-muted uppercase">
@@ -29,17 +41,19 @@ const ProjectCard = ({ project }) => {
       <div className="mt-auto flex items-center gap-4 pt-2 text-sm font-semibold max-lg:grid max-lg:grid-cols-2 max-lg:gap-3">
         {project.demo ? (
           <a href={project.demo} target="_blank" rel="noopener" className={demoClass}>
-            Live demo ↗
+            {label("Live demo")}
+            <NewTab />
           </a>
         ) : (
-          <Dialog label="Live demo ↗" what="live demo" project={project.title} className={demoClass} />
+          <Dialog label={label("Live demo")} what="live demo" project={project.title} className={demoClass} />
         )}
         {project.code ? (
           <a href={project.code} target="_blank" rel="noopener" className={codeClass}>
-            Code ↗
+            {label("Code")}
+            <NewTab />
           </a>
         ) : (
-          <Dialog label="Code ↗" what="code" project={project.title} className={codeClass} />
+          <Dialog label={label("Code")} what="code" project={project.title} className={codeClass} />
         )}
       </div>
     </article>
