@@ -26,8 +26,11 @@
 		--inner: clamp(16px, 4vw, 56px);
 	}
 
+	/* scroll-padding keeps content clear of the sticky nav, both when jumping to a #section
+	   and when Tab moves focus to a link or field that was off-screen */
 	html {
 		scroll-behavior: smooth;
+		scroll-padding-top: 7rem;
 	}
 
 	/* no page scroll behind an open modal (components/Dialog.jsx) */
@@ -63,11 +66,6 @@
 		line-height: 1.1;
 	}
 
-	/* keep section headings clear of the sticky nav when jumping to an anchor */
-	section[id] {
-		scroll-margin-top: 7rem;
-	}
-
 	/* yellow strip above the sticky nav so page content doesn't show through the gap */
 	body::before {
 		content: "";
@@ -78,6 +76,8 @@
 		background: var(--color-bg);
 	}
 
+	/* keyboard focus ring for every link and button (form fields have their own green ring in
+	   Contact.jsx). Rounded buttons keep their own radius: Tailwind's rounded-* wins over this layer */
 	a:focus-visible,
 	button:focus-visible {
 		outline: 2px solid var(--color-accent);
