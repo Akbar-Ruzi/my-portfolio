@@ -128,14 +128,14 @@ const Contact = () => {
       <div className="grid grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] gap-[clamp(24px,5vw,56px)] rounded-2xl border border-line bg-surface p-[clamp(24px,5vw,48px)] max-lg:grid-cols-1 max-sm:border-0 max-sm:bg-transparent max-sm:p-0">
         {/* INTRO */}
         <div className="grid content-start gap-[18px]">
-          <span className="font-mono text-xs leading-none tracking-[0.08em] text-muted uppercase">
+          <span className="font-mono text-xs leading-none font-medium tracking-[0.08em] text-muted uppercase">
             {contactData.label}
           </span>
-          <h2 id="contact-h" className="text-[clamp(28px,4.5vw,44px)] font-semibold">
+          <h2 id="contact-h" className="text-[clamp(28px,4.5vw,44px)] font-extrabold">
             {contactData.title}
           </h2>
           <p className="max-w-[45ch] text-muted">{contactData.desc}</p>
-          {/* SOCIAL PILLS: below 640px they split the full row 50/50 and get a bit smaller */}
+          {/* SOCIAL PILLS: below 640px they split the full row 50/50 with less padding */}
           <div className="flex flex-wrap gap-3 max-sm:grid max-sm:grid-cols-2">
             {socials.map((social) => (
               <a
@@ -143,7 +143,7 @@ const Contact = () => {
                 href={social.url}
                 target="_blank"
                 rel="noopener"
-                className={`inline-flex items-center justify-center rounded-full px-5 py-3 font-semibold text-white hover:brightness-115 max-sm:px-4 max-sm:py-2.5 max-sm:text-[15px] ${social.bg}`}
+                className={`inline-flex items-center justify-center rounded-full px-5 py-3 text-[15px] font-semibold text-white hover:brightness-115 max-sm:px-4 max-sm:py-2.5 ${social.bg}`}
               >
                 {social.name}
                 <span aria-hidden="true">&nbsp;↗</span>
