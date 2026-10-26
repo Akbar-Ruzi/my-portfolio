@@ -8,11 +8,11 @@ const skillSet = [
   },
   {
     group: "Backend & AI",
-    items: ["Python", "FastAPI", "PostgreSQL", "Redis", "AI integrations"],
+    items: ["Python", "FastAPI", "Node.js", "PostgreSQL", "MySQL", "MongoDB", "Redis", "AI integrations"],
   },
   {
     group: "Tools",
-    items: ["Git & GitHub", "VS Code", "Figma"],
+    items: ["Git & GitHub", "Docker", "VS Code", "Figma"],
   },
 ];
 
