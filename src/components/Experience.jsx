@@ -1,23 +1,37 @@
 import experiences from "@/utils/experiences";
 import withBold from "@/utils/withBold";
+import Tags from "@/components/Tags";
+import MoreLink from "@/components/MoreLink";
 
-const Experience = () => {
+// home (preview): the newest entries + "View full experience →".
+// /experience: every entry; the page header is the visible title, so the h2 is for screen readers only.
+const PREVIEW_COUNT = 4;
+
+const Experience = ({ preview = false }) => {
+  const items = preview ? experiences.slice(0, PREVIEW_COUNT) : experiences;
+
   return (
     <section
       id="experience"
       aria-labelledby="xp-h"
       className="card-section rounded-[20px] bg-cream py-14"
     >
-      <h2 id="xp-h" className="mb-7 text-[clamp(28px,4vw,38px)]">
-        Experience
-      </h2>
+      {preview ? (
+        <h2 id="xp-h" className="mb-7 text-[clamp(28px,4vw,38px)] font-bold">
+          Experience
+        </h2>
+      ) : (
+        <h2 id="xp-h" className="sr-only">
+          All experience
+        </h2>
+      )}
       {/* TIMELINE, three layouts:
           - desktop (≥1024px): grid [org + date] [line + dot] [role + details]
           - tablet (640–1023px): the line moves to the left, org/role stack beside it
           - phone (<640px): no line; each entry is a white card on the cream section
           (max-sm: rules come after max-lg: in Tailwind's CSS, so on phones they win) */}
       <ol className="grid max-sm:gap-3">
-        {experiences.map((item) => (
+        {items.map((item) => (
           <li
             key={item.id}
             style={{ "--dot": item.dot }}
@@ -59,10 +73,12 @@ const Experience = () => {
                   {withBold(item.summary)}
                 </p>
               )}
+              {item.tags && <Tags tags={item.tags} className="mt-3.5" />}
             </div>
           </li>
         ))}
       </ol>
+      {preview && <MoreLink href="/experience">View full experience</MoreLink>}
     </section>
   );
 };

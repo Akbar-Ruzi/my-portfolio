@@ -13,7 +13,7 @@ const Homepage = () => {
 			<Hero />
 			<main className="flex flex-col gap-[var(--outer)]">
 				<About />
-				<Experience />
+				<Experience preview />
 				<Projects />
 				<Contact />
 			</main>

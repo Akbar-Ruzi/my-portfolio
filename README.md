@@ -49,6 +49,7 @@ After cloning, create `src/utils/experiences.js` yourself, or `npm run dev` / `n
 // Each entry has either `bullets` (a list) or `summary` (one paragraph).
 // Wrap words in **double asterisks** to show them in bold.
 // dot: timeline dot color; the design cycles green, orange, yellow.
+// tags: tech chips shown under the role (optional).
 const experiences = [
   {
     id: "acme",
@@ -61,6 +62,7 @@ const experiences = [
       "Cut page load time by 40% with code splitting and lazy loading.",
       "Wrote unit tests with Jest and reviewed pull requests for a team of four.",
     ],
+    tags: ["React", "TypeScript", "Tailwind CSS", "Jest"],
   },
   {
     id: "earlier",
@@ -87,6 +89,9 @@ Fields:
 | `dot` | yes | Color of the timeline dot (any CSS color). |
 | `bullets` | one of these two | Array of strings, shown as a bullet list. |
 | `summary` | one of these two | One paragraph, for entries that combine several short roles. |
+| `tags` | no | Array of strings, shown as tech chips under the description. |
+
+The home page shows the first 4 entries with a "View full experience" button; `/experience` shows all of them.
 
 ## Contact form setup (EmailJS)
 
