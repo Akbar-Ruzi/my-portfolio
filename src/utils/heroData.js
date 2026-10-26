@@ -8,5 +8,6 @@ const heroData = {
 	primary: { url: "#contact", title: "Hire Me" },
 	secondary: { url: "#work", title: "See my work" },
 	gourdButton: { open: "What's inside? Open me", close: "Back into the gourd" }, // button on the hero gourd (components/HeroGourd.jsx)
+	caravan: ["Magic gourds for sale!", "Dreams come true inside!"], // the elder's speech bubble takes turns (components/Caravan.jsx)
 };
 export default heroData;

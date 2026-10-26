@@ -1,16 +1,16 @@
 import heroData from "@/utils/heroData";
 import HeroGourd from "@/components/HeroGourd";
+import Caravan from "@/components/Caravan";
 
 const Hero = () => {
   return (
     // only the bottom corners are rounded so the hero joins the nav above it.
     // No id="top" on purpose: when no element has that id, the browser sends "#top" links
     // to the very top of the page, so the nav and hero look the same as on first load.
-    <div
-      className="card-section relative overflow-hidden rounded-b-[20px] bg-cream"
-    >
+    // The side padding (card-section) is on the header, not the card, so the caravan below can span the full card.
+    <div className="relative overflow-hidden rounded-b-[20px] bg-cream">
       {/* GRID: text | gourd on desktop, stacked at ≤860px; items sit on the bottom edge */}
-      <header className="relative z-[1] grid grid-cols-[1.05fr_.95fr] items-end gap-8 pt-12 max-[860px]:grid-cols-1">
+      <header className="card-section relative z-[1] grid grid-cols-[1.05fr_.95fr] items-end gap-8 pt-12 max-[860px]:grid-cols-1">
         {/* HERO TEXT: isolate keeps the watermark (z-index -1) behind the text but inside this box */}
         <div className="relative isolate grid min-w-0 content-center gap-6 self-center pb-[clamp(100px,12vw,150px)] max-[860px]:pb-[84px]">
           {/* ROLE PILL: blue pill so recruiters spot the roles first; the green dot with a light inner ring is an "available" status light.
@@ -88,6 +88,8 @@ const Hero = () => {
         {/* HERO GOURD */}
         <HeroGourd />
       </header>
+      {/* CARAVAN: an elder and his donkey walk across the bottom of the hero */}
+      <Caravan />
     </div>
   );
 };

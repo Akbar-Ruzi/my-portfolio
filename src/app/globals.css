@@ -116,6 +116,70 @@
 	}
 }
 
+/* hero caravan (see .caravan in the components layer) */
+@keyframes cross {
+	from {
+		transform: translateX(-330px);
+	}
+	to {
+		transform: translateX(calc(100cqw + 20px));
+	}
+}
+@keyframes step-a {
+	0%,
+	100% {
+		transform: rotate(14deg);
+	}
+	50% {
+		transform: rotate(-14deg);
+	}
+}
+@keyframes step-b {
+	0%,
+	100% {
+		transform: rotate(-14deg);
+	}
+	50% {
+		transform: rotate(14deg);
+	}
+}
+@keyframes bob {
+	to {
+		transform: translateY(-1.6px);
+	}
+}
+@keyframes swing {
+	0%,
+	100% {
+		transform: rotate(7deg);
+	}
+	50% {
+		transform: rotate(-7deg);
+	}
+}
+@keyframes nod {
+	50% {
+		transform: rotate(4deg);
+	}
+}
+@keyframes talk {
+	0%,
+	6% {
+		opacity: 0;
+		transform: scale(0.4) translateY(8px);
+	}
+	12%,
+	58% {
+		opacity: 1;
+		transform: none;
+	}
+	66%,
+	100% {
+		opacity: 0;
+		transform: translateY(-6px);
+	}
+}
+
 /* Custom CSS lives in layers so Tailwind utilities can still override it */
 @layer base {
 	:root {
@@ -286,6 +350,111 @@
 		}
 		.gourd[data-state="open"] .pop:hover .chip {
 			animation: wiggle 0.5s ease-in-out;
+		}
+	}
+
+	/* HERO CARAVAN (components/Caravan.jsx): a strip at the bottom of the hero card. The walker crosses it
+	   in 34s (100cqw = the strip's width); legs step, bodies bob, the hand gourd swings, the donkey nods,
+	   the bubble pops up every 7s. With reduced motion the pair stands still in the middle, bubble shown */
+	.caravan {
+		position: relative;
+		height: 170px;
+		overflow: hidden;
+		container-type: inline-size;
+	}
+	.caravan-ground {
+		position: absolute;
+		inset: auto 0 4px;
+		height: 2px;
+		background: repeating-linear-gradient(90deg, #dccdb2 0 18px, transparent 18px 28px);
+		opacity: 0.9;
+	}
+	.walker,
+	.walker-inner {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 320px;
+		height: 170px;
+	}
+	.walker-inner {
+		transform-origin: 0 100%;
+	}
+	.caravan .bubble {
+		position: absolute;
+		left: 138px;
+		top: 4px;
+		padding: 7px 12px;
+		border-radius: 14px;
+		background: var(--color-cta);
+		color: #ffffff;
+		font: 600 13px/1.2 var(--font-body);
+		white-space: nowrap;
+		box-shadow: 0 8px 18px -10px rgba(90, 50, 20, 0.35);
+		transform-origin: 30% 100%;
+	}
+	/* the bubble's tail */
+	.caravan .bubble::after {
+		content: "";
+		position: absolute;
+		left: 62px;
+		bottom: -6px;
+		width: 12px;
+		height: 12px;
+		background: var(--color-cta);
+		transform: rotate(45deg);
+	}
+	.walker :is(.leg, .dleg, .hang, .dhead) {
+		transform-box: fill-box;
+		transform-origin: 50% 0;
+	}
+	.walker .dhead {
+		transform-origin: 20% 80%;
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		.walker {
+			animation: cross 34s linear infinite;
+			will-change: transform;
+		}
+		.walker :is(.l1, .d1) {
+			animation: step-a 0.8s ease-in-out infinite;
+		}
+		.walker :is(.l2, .d2) {
+			animation: step-b 0.8s ease-in-out infinite;
+		}
+		.walker :is(.bob, .dbob) {
+			animation: bob 0.4s ease-in-out infinite alternate;
+		}
+		.walker .hang {
+			animation: swing 0.8s ease-in-out infinite;
+		}
+		.walker .dhead {
+			animation: nod 0.8s ease-in-out infinite;
+		}
+		.caravan .bubble {
+			animation: talk 7s ease-in-out infinite backwards;
+		}
+		.caravan[data-paused="true"] * {
+			animation-play-state: paused !important;
+		}
+	}
+	@media (max-width: 640px) {
+		.caravan {
+			height: 136px;
+		}
+		.walker-inner {
+			transform: scale(0.8);
+		}
+	}
+	/* standing still: center the 260px-wide drawing (208px on phones, scaled 0.8) */
+	@media (prefers-reduced-motion: reduce) {
+		.walker {
+			left: calc(50% - 130px);
+		}
+	}
+	@media (prefers-reduced-motion: reduce) and (max-width: 640px) {
+		.walker {
+			left: calc(50% - 104px);
 		}
 	}
 
