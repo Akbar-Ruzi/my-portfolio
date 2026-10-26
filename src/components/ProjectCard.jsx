@@ -1,4 +1,5 @@
 import Dialog from "@/components/Dialog";
+import Tags from "@/components/Tags";
 
 // below 1024px (tablet + phone) both links become equal-width pills that fill the row
 const demoClass = "rounded-full bg-cta px-3.5 py-2 text-center text-white hover:brightness-110";
@@ -23,19 +24,9 @@ const ProjectCard = ({ project }) => {
       <span className="self-start font-mono text-xs leading-none tracking-[0.08em] text-muted uppercase">
         {project.kind}
       </span>
-      <h3 className="text-[22px]">{project.title}</h3>
+      <h3 className="text-[22px] font-bold">{project.title}</h3>
       <p className="text-muted">{project.desc}</p>
-      {/* TAGS */}
-      <ul className="mt-1 flex flex-wrap gap-1.5">
-        {project.tags.map((tag) => (
-          <li
-            key={tag}
-            className="rounded bg-accent-soft px-2 py-1.5 font-mono text-xs leading-none font-medium"
-          >
-            {tag}
-          </li>
-        ))}
-      </ul>
+      <Tags tags={project.tags} className="mt-1" />
       {/* LINKS: pushed to the bottom so they line up across a row.
           An empty url shows the same button, which opens the "not ready yet" dialog instead. */}
       <div className="mt-auto flex items-center gap-4 pt-2 text-sm font-semibold max-lg:grid max-lg:grid-cols-2 max-lg:gap-3">

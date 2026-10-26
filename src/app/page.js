@@ -14,7 +14,7 @@ const Homepage = () => {
 			<main className="flex flex-col gap-[var(--outer)]">
 				<About />
 				<Experience preview />
-				<Projects />
+				<Projects preview />
 				<Contact />
 			</main>
 			<Footer />
