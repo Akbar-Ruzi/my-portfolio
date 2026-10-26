@@ -1,8 +1,16 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import links from "@/utils/links";
 
 const Navbar = () => {
+  // On a sub-page (/experience, /projects) the home sections aren't there,
+  // so each link goes back to the home page first: "#about" becomes "/#about".
+  // next/link swaps the page without a full reload; on home the links stay plain <a>.
+  const isHome = usePathname() === "/";
+  const Anchor = isHome ? "a" : Link;
+  const to = (hash) => (isHome ? hash : `/${hash}`);
   const navRef = useRef(null);
   const [stuck, setStuck] = useState(false);// Changes Navbar appearance after scrolling 40px
   const [active, setActive] = useState(null); // Highlights the navigation link for the current section
@@ -19,7 +27,9 @@ const Navbar = () => {
     const update = () => {
       // when the user scrolls more than 40px, stuck becomes true, React re-renders the Navbar, and the CSS classes change.
       setStuck(window.scrollY > 40);
-      if (!navRef.current) return;
+      // scroll-spy only on home: /experience and /projects reuse the ids #experience / #work,
+      // and their nav links lead back to home, so nothing should be underlined there
+      if (!navRef.current || !isHome) return;
       // getBoundingClientRect calculates the element's current position each time you call it. 
       const mark = navRef.current.getBoundingClientRect().bottom + 120;
       let current = null;
@@ -52,7 +62,7 @@ const Navbar = () => {
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
     };
-  }, []);
+  }, [isHome]);
 
   return (
     <nav
@@ -66,35 +76,36 @@ const Navbar = () => {
     >
       <div className="flex flex-wrap items-center justify-between gap-4 py-3.5 max-[640px]:gap-y-1.5 max-[640px]:py-2.5">
         {/* LOGO */}
-        <a
-          href="#top"
+        {/* home: #top (the Hero); sub-page: "/" opens the home page at the top */}
+        <Anchor
+          href={isHome ? "#top" : "/"}
           className="font-display text-xl leading-none font-extrabold"
         >
           Magic <span className="text-accent">Gourd</span>
-        </a>
+        </Anchor>
         {/* LINKS */}
         <ul className="flex flex-wrap gap-1 max-[640px]:order-3 max-[640px]:w-full max-[640px]:justify-center">
           {links.map((link) => (
             <li key={link.title}>
-              <a
-                href={link.url}
+              <Anchor
+                href={to(link.url)}
                 aria-current={active === link.url ? "true" : undefined}
                 className={`nav-link relative block rounded-md px-3 py-2 text-[15px] font-medium text-muted transition-colors hover:bg-cta/10 hover:text-cta max-[640px]:px-2.5 max-[640px]:py-1.5 ${
                   active === link.url ? "active" : ""
                 }`}
               >
                 {link.title}
-              </a>
+              </Anchor>
             </li>
           ))}
         </ul>
         {/* CONTACT BUTTON */}
-        <a
-          href="#contact"
+        <Anchor
+          href={to("#contact")}
           className="rounded-full bg-cta px-5 py-2.5 text-[15px] font-semibold text-white hover:brightness-110 max-[640px]:px-4 max-[640px]:py-2 max-[640px]:text-sm"
         >
           Contact Me
-        </a>
+        </Anchor>
       </div>
     </nav>
   );
