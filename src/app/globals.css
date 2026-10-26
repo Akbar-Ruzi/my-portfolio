@@ -22,6 +22,8 @@
 	--animate-magic-float: magic-float 3.4s ease-in-out infinite;
 	--animate-magic-pulse: magic-pulse 3.4s ease-in-out infinite;
 	--animate-twinkle: twinkle 2.2s ease-in-out infinite;
+	/* the About skill pills shake on hover (keyframes below, shared with the gourd chips) */
+	--animate-wiggle: wiggle 0.5s ease-in-out;
 	@keyframes magic-float {
 		50% {
 			transform: translateY(-6px);
@@ -86,7 +88,7 @@
 		transform: none;
 	}
 }
-/* a chip shakes on hover; the lid tips as if pouring when a chip is picked */
+/* a chip (or an About skill pill) shakes on hover; the lid tips as if pouring when a chip is picked */
 @keyframes wiggle {
 	0%,
 	100% {
