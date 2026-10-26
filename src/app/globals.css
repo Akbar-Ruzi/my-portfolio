@@ -86,6 +86,35 @@
 		transform: none;
 	}
 }
+/* a chip shakes on hover; the lid tips as if pouring when a chip is picked */
+@keyframes wiggle {
+	0%,
+	100% {
+		transform: none;
+	}
+	20% {
+		transform: translateX(-3px) rotate(-3deg);
+	}
+	40% {
+		transform: translateX(3px) rotate(3deg);
+	}
+	60% {
+		transform: translateX(-2px) rotate(-2deg);
+	}
+	80% {
+		transform: translateX(2px) rotate(2deg);
+	}
+}
+@keyframes pour {
+	0%,
+	100% {
+		transform: none;
+	}
+	25%,
+	70% {
+		transform: translate(12px, -22px) rotate(24deg);
+	}
+}
 
 /* Custom CSS lives in layers so Tailwind utilities can still override it */
 @layer base {
@@ -169,13 +198,43 @@
 	   Opening: the lid lifts and tilts, the chips pop out of the neck one by one (--d = delay,
 	   --dx/--dy = start offset at the neck), the code screen grows in, then the code lines fly in.
 	   Closing plays the same animations in reverse. With reduced motion none of this applies,
-	   so the gourd simply shows open (chips + code) */
-	.gourd :is(.lid, .pop, .fly, .screen) {
+	   so the gourd simply shows open (chips + code), and picking a chip just swaps the code */
+	.gourd :is(.lid, .lidwrap, .pop, .chip, .fly, .screen) {
 		transform-box: fill-box;
 		transform-origin: center;
 	}
-	.gourd .lid {
+	.gourd :is(.lid, .lidwrap) {
 		transform-origin: 100% 100%;
+	}
+
+	/* TECH CHIPS: clickable only while open. Picked = green, hover / keyboard focus = yellow with
+	   a white ring (SVG has no outline, so the ring is the focus indicator) */
+	.gourd .pop {
+		pointer-events: none;
+		outline: none;
+	}
+	.gourd[data-state="open"] .pop {
+		pointer-events: auto;
+		cursor: pointer;
+	}
+	.gourd .chip :is(rect, text) {
+		transition: fill 0.2s;
+	}
+	.gourd .pop[aria-pressed="true"] rect {
+		fill: var(--color-cta);
+	}
+	.gourd .pop[aria-pressed="true"] text {
+		fill: #ffffff;
+	}
+	.gourd .pop:is(:hover, :focus-visible) rect {
+		fill: var(--color-bg);
+	}
+	.gourd .pop:is(:hover, :focus-visible) text {
+		fill: #3a2410;
+	}
+	.gourd .pop:focus-visible rect {
+		stroke: #ffffff;
+		stroke-width: 2;
 	}
 	.gourd .magic {
 		transition: opacity 0.5s;
@@ -211,11 +270,22 @@
 		.gourd[data-state="closing"] .pop {
 			animation: pop-out 0.75s cubic-bezier(0.7, -0.15, 0.8, 0.2) calc(3.05s - var(--d)) reverse both;
 		}
+		/* a picked snippet's lines (--bd) go back in on their own, quicker timing */
 		.gourd[data-state="closing"] .fly {
-			animation: pop-out 0.7s cubic-bezier(0.7, -0.1, 0.8, 0.2) calc(3.25s - var(--d)) reverse both;
+			animation: pop-out 0.7s cubic-bezier(0.7, -0.1, 0.8, 0.2) var(--bd, calc(3.25s - var(--d))) reverse both;
 		}
 		.gourd[data-state="closing"] .screen {
 			animation: screen-in 0.5s ease-in 1.55s reverse both;
+		}
+		/* picking a chip: the new snippet's lines fly in, the lid pours, a hovered chip wiggles */
+		.gourd[data-state="open"] .picked .fly {
+			animation: pop-out 0.7s cubic-bezier(0.2, 0.8, 0.3, 1.1) var(--d) both;
+		}
+		.gourd .lidwrap.pour {
+			animation: pour 0.9s ease-in-out;
+		}
+		.gourd[data-state="open"] .pop:hover .chip {
+			animation: wiggle 0.5s ease-in-out;
 		}
 	}
 

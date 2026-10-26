@@ -68,12 +68,12 @@ const wood = (c, out, t) => {
 };
 
 // plays one sound `delay` seconds from now; no sound is fine, it never breaks the animation
-const play = (sound, delay) => {
+const play = (sound, delay, volume = 0.55) => {
 	try {
 		const c = audio();
 		if (!c) return;
 		const out = c.createGain();
-		out.gain.value = 0.55;
+		out.gain.value = volume;
 		out.connect(c.destination);
 		sound(c, out, c.currentTime + delay);
 	} catch {
@@ -86,3 +86,6 @@ export const playOpen = () => play(cork, 0.67);
 
 // wood knock as the lid lands back on (about 3.77s after "Back into the gourd" is clicked)
 export const playClose = () => play(wood, 3.77);
+
+// softer cork pop right away when a tech chip is clicked
+export const playPick = () => play(cork, 0.02, 0.35);
