@@ -24,7 +24,7 @@ const ProjectCard = ({ project }) => {
       <span className="self-start font-mono text-xs leading-none tracking-[0.08em] text-muted uppercase">
         {project.kind}
       </span>
-      <h3 className="text-[22px] font-bold">{project.title}</h3>
+      <h3 className="text-[22px] font-extrabold">{project.title}</h3>
       <p className="text-muted">{project.desc}</p>
       <Tags tags={project.tags} className="mt-1" />
       {/* LINKS: pushed to the bottom so they line up across a row.

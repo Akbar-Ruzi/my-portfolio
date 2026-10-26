@@ -9,7 +9,7 @@ const About = () => {
       aria-labelledby="about-h"
       className="card-section rounded-[20px] bg-cream py-14"
     >
-      <h2 id="about-h" className="mb-7 text-[clamp(28px,4vw,38px)]">
+      <h2 id="about-h" className="mb-7 text-[clamp(28px,4vw,38px)] font-semibold">
         {summaryData.title}
       </h2>
       {/* GRID: text | skill groups, stacked at ≤760px */}

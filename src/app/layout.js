@@ -1,7 +1,9 @@
 import { Bricolage_Grotesque, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const display = Bricolage_Grotesque({ subsets: ["latin"], weight: ["600", "800"], variable: "--nf-display" });
+// variable font with the optical-size axis (opsz), as in the new design: big headings get the condensed
+// display cut automatically (font-optical-sizing: auto); next/font only allows axes on the variable font
+const display = Bricolage_Grotesque({ subsets: ["latin"], axes: ["opsz"], variable: "--nf-display" });
 const body = Instrument_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--nf-body" });
 const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--nf-mono" });
 

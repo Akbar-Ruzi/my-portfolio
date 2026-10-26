@@ -17,7 +17,7 @@ const Experience = ({ preview = false }) => {
       className="card-section rounded-[20px] bg-cream py-14"
     >
       {preview ? (
-        <h2 id="xp-h" className="mb-7 text-[clamp(28px,4vw,38px)] font-bold">
+        <h2 id="xp-h" className="mb-7 text-[clamp(28px,4vw,38px)] font-extrabold">
           Experience
         </h2>
       ) : (

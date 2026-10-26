@@ -131,7 +131,7 @@ const Contact = () => {
           <span className="font-mono text-xs leading-none tracking-[0.08em] text-muted uppercase">
             {contactData.label}
           </span>
-          <h2 id="contact-h" className="text-[clamp(28px,4.5vw,44px)]">
+          <h2 id="contact-h" className="text-[clamp(28px,4.5vw,44px)] font-semibold">
             {contactData.title}
           </h2>
           <p className="max-w-[45ch] text-muted">{contactData.desc}</p>
@@ -161,7 +161,7 @@ const Contact = () => {
           className="grid min-w-0 gap-[18px] rounded-[20px] border border-line bg-panel p-[clamp(22px,4vw,36px)] shadow-[0_24px_50px_-24px_rgba(15,26,46,.30)] max-sm:border-0 max-sm:p-0 max-sm:shadow-none"
         >
           <div>
-            <h3 className="text-[clamp(22px,2.6vw,28px)] leading-[1.2] font-bold">
+            <h3 className="text-[clamp(22px,2.6vw,28px)] leading-[1.2] font-extrabold">
               {form.title}
             </h3>
             <p className="mt-1.5 text-[15px] text-muted">{form.desc}</p>

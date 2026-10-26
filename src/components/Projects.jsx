@@ -16,7 +16,7 @@ const Projects = ({ preview = false }) => {
       className="card-section rounded-[20px] bg-panel py-14"
     >
       {preview ? (
-        <h2 id="work-h" className="mb-7 text-[clamp(28px,4vw,38px)] font-bold">
+        <h2 id="work-h" className="mb-7 text-[clamp(28px,4vw,38px)] font-extrabold">
           What I&apos;ve Built
         </h2>
       ) : (
