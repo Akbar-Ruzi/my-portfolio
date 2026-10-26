@@ -49,6 +49,44 @@
 	}
 }
 
+/* hero gourd opening / closing (see .gourd in the components layer); only transform and opacity animate */
+@keyframes lid {
+	0%,
+	100% {
+		transform: none;
+	}
+	14%,
+	84% {
+		transform: translate(14px, -26px) rotate(28deg);
+	}
+}
+@keyframes pop-out {
+	0% {
+		opacity: 0;
+		transform: translate(var(--dx), var(--dy)) scale(0.2);
+	}
+	20% {
+		opacity: 1;
+	}
+	45% {
+		transform: translate(var(--dx), calc(var(--dy) - 46px)) scale(0.75);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes screen-in {
+	from {
+		opacity: 0;
+		transform: scale(0.2);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
 /* Custom CSS lives in layers so Tailwind utilities can still override it */
 @layer base {
 	:root {
@@ -127,6 +165,60 @@
 	.nav-link.active {
 		color: var(--color-cta);
 	}
+	/* HERO GOURD (components/HeroGourd.jsx): data-state is closed → opening → open → closing → closed.
+	   Opening: the lid lifts and tilts, the chips pop out of the neck one by one (--d = delay,
+	   --dx/--dy = start offset at the neck), the code screen grows in, then the code lines fly in.
+	   Closing plays the same animations in reverse. With reduced motion none of this applies,
+	   so the gourd simply shows open (chips + code) */
+	.gourd :is(.lid, .pop, .fly, .screen) {
+		transform-box: fill-box;
+		transform-origin: center;
+	}
+	.gourd .lid {
+		transform-origin: 100% 100%;
+	}
+	.gourd .magic {
+		transition: opacity 0.5s;
+	}
+	.gourd:is([data-state="opening"], [data-state="open"]) .magic {
+		opacity: 0;
+		transition: opacity 0.3s;
+	}
+	.gourd[data-state="closing"] .magic {
+		transition: opacity 0.7s 3.3s;
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		.gourd[data-state="closed"] :is(.pop, .fly) {
+			opacity: 0;
+		}
+		.gourd[data-state="closed"] .screen {
+			opacity: 0;
+			transform: scale(0.2);
+		}
+		.gourd:is([data-state="opening"], [data-state="closing"]) .lid {
+			animation: lid 3.6s ease-in-out 0.2s both;
+		}
+		.gourd[data-state="opening"] .pop {
+			animation: pop-out 0.75s cubic-bezier(0.2, 0.8, 0.3, 1.15) var(--d) both;
+		}
+		.gourd[data-state="opening"] .fly {
+			animation: pop-out 0.7s cubic-bezier(0.2, 0.8, 0.3, 1.1) var(--d) both;
+		}
+		.gourd[data-state="opening"] .screen {
+			animation: screen-in 0.55s cubic-bezier(0.2, 0.8, 0.3, 1.1) 1.7s both;
+		}
+		/* closing: the last item out goes back in first */
+		.gourd[data-state="closing"] .pop {
+			animation: pop-out 0.75s cubic-bezier(0.7, -0.15, 0.8, 0.2) calc(3.05s - var(--d)) reverse both;
+		}
+		.gourd[data-state="closing"] .fly {
+			animation: pop-out 0.7s cubic-bezier(0.7, -0.1, 0.8, 0.2) calc(3.25s - var(--d)) reverse both;
+		}
+		.gourd[data-state="closing"] .screen {
+			animation: screen-in 0.5s ease-in 1.55s reverse both;
+		}
+	}
+
 	.nav-link.active::after {
 		content: "";
 		position: absolute;

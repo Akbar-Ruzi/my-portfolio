@@ -7,5 +7,6 @@ const heroData = {
 	watermark: "UI → AI\nApplication Engineer", // faint text behind the hero text; \n starts the second line
 	primary: { url: "#contact", title: "Hire Me" },
 	secondary: { url: "#work", title: "See my work" },
+	gourdButton: { open: "What's inside? Open me", close: "Back into the gourd" }, // button on the hero gourd (components/HeroGourd.jsx)
 };
 export default heroData;
