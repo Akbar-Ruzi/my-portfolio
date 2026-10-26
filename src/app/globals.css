@@ -16,6 +16,37 @@
 	--font-display: var(--nf-display), "Segoe UI", system-ui, sans-serif;
 	--font-body: var(--nf-body), "Segoe UI", system-ui, sans-serif;
 	--font-mono: var(--nf-mono), ui-monospace, Menlo, Consolas, monospace;
+
+	/* closed hero gourd (components/HeroGourd.jsx): the "Magic Gourd" title floats,
+	   its subtitle pulses, and the sparks twinkle */
+	--animate-magic-float: magic-float 3.4s ease-in-out infinite;
+	--animate-magic-pulse: magic-pulse 3.4s ease-in-out infinite;
+	--animate-twinkle: twinkle 2.2s ease-in-out infinite;
+	@keyframes magic-float {
+		50% {
+			transform: translateY(-6px);
+		}
+	}
+	@keyframes magic-pulse {
+		0%,
+		100% {
+			opacity: 0.75;
+		}
+		50% {
+			opacity: 1;
+		}
+	}
+	@keyframes twinkle {
+		0%,
+		100% {
+			opacity: 0.2;
+			transform: scale(0.5) rotate(0);
+		}
+		50% {
+			opacity: 1;
+			transform: scale(1.15) rotate(45deg);
+		}
+	}
 }
 
 /* Custom CSS lives in layers so Tailwind utilities can still override it */

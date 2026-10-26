@@ -12,11 +12,11 @@ const Hero = () => {
       {/* GRID: text | gourd on desktop, stacked at ≤860px; items sit on the bottom edge */}
       <header className="relative z-[1] grid grid-cols-[1.05fr_.95fr] items-end gap-8 pt-12 max-[860px]:grid-cols-1">
         {/* HERO TEXT: isolate keeps the watermark (z-index -1) behind the text but inside this box */}
-        <div className="relative isolate grid min-w-0 content-center gap-6 self-center pb-[clamp(40px,8vw,110px)] max-[860px]:pb-[72px]">
-          {/* LABEL: blue pill so recruiters spot the roles first; the ringed green dot is an "available" status light */}
-          {/* smaller text and tracking below 640px so the three roles fit one row on most phones */}
-          <span className="inline-flex items-center gap-3 justify-self-start rounded-2xl border border-accent/20 bg-accent-soft px-3.5 py-2.5 font-mono text-[11px] leading-none font-semibold tracking-[.04em] text-accent uppercase sm:rounded-full sm:px-4 sm:text-sm sm:tracking-[.08em]">
-            <span aria-hidden="true" className="size-2 shrink-0 rounded-full bg-cta ring-4 ring-cta/20" />
+        <div className="relative isolate grid min-w-0 content-center gap-6 self-center pb-[clamp(100px,12vw,150px)] max-[860px]:pb-[84px]">
+          {/* ROLE PILL: blue pill so recruiters spot the roles first; the green dot with a light inner ring is an "available" status light.
+              Smaller text where the text column is narrow (two columns below 960px, phones below 640px), so the roles stay on one line */}
+          <span className="inline-flex items-center gap-2.5 justify-self-start rounded-full border border-[#C3D0EE] bg-accent-soft py-2 pr-4 pl-2.5 font-mono text-[13px] leading-[1.2] font-semibold tracking-[.08em] text-accent uppercase max-[960px]:text-xs max-sm:gap-2 max-sm:pl-2 max-sm:text-[11px] max-sm:tracking-[.02em]">
+            <span aria-hidden="true" className="size-4 shrink-0 rounded-full bg-cta shadow-[inset_0_0_0_3px_#B9DCD3]" />
             {/* on very narrow screens the roles wrap as whole words instead of breaking mid-word */}
             <span className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
               {heroData.roles.map((role, i) => (
@@ -77,10 +77,10 @@ const Hero = () => {
               {heroData.secondary.title}
             </a>
           </div>
-          {/* WATERMARK: faint big text behind the bottom of the text column */}
+          {/* WATERMARK: faint big text behind the bottom of the text column; whitespace-pre keeps its two lines */}
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute bottom-[-.12em] left-0 -z-10 font-display text-[clamp(56px,8vw,96px)] leading-none font-extrabold tracking-[-.02em] whitespace-nowrap text-fg/5"
+            className="pointer-events-none absolute bottom-[-.1em] left-0 -z-10 font-display text-[clamp(30px,4.3vw,54px)] leading-[.98] font-extrabold tracking-[-.02em] whitespace-pre text-fg/5"
           >
             {heroData.watermark}
           </span>
