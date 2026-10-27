@@ -79,9 +79,23 @@ const Navbar = () => {
         {/* home: #top (the Hero); sub-page: "/" opens the home page at the top */}
         <Anchor
           href={isHome ? "#top" : "/"}
-          className="font-display text-xl leading-none font-extrabold"
+          className="inline-flex items-center gap-2 font-display text-xl leading-none font-extrabold"
         >
-          Magic <span className="text-accent">Gourd</span>
+          {/* small gourd icon: the hero gourd's shapes and colors (HeroGourd.jsx), without the handle
+              string, which would be thinner than a pixel at this size; decorative, the text is the name.
+              Hidden below 360px, so "Contact Me" still fits on the same row on the narrowest phones */}
+          <svg viewBox="8 10 344 510" className="h-7 w-auto shrink-0 max-[359px]:hidden" aria-hidden="true">
+            <ellipse cx="180" cy="362" rx="170" ry="155" fill="#B9672F" />
+            <circle cx="180" cy="165" r="100" fill="#BE6B31" />
+            <ellipse cx="180" cy="248" rx="52" ry="18" fill="#A85A27" />
+            <ellipse cx="148" cy="112" rx="26" ry="16" fill="#E39A5E" opacity=".5" />
+            <rect x="164" y="58" width="32" height="12" rx="2" fill="#C9A86A" />
+            <path d="M160 18 L200 18 L193 36 L193 60 L167 60 L167 36 Z" fill="#2B2B2A" />
+            <rect x="157" y="12" width="46" height="9" rx="3" fill="#3A3A38" />
+          </svg>
+          <span>
+            Magic <span className="text-accent">Gourd</span>
+          </span>
         </Anchor>
         {/* LINKS */}
         <ul className="flex flex-wrap gap-1 max-[640px]:order-3 max-[640px]:w-full max-[640px]:justify-center">
