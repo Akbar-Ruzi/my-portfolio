@@ -28,7 +28,7 @@ const About = () => {
             {summaryData.certifications.join(", ")}
           </p>
         </div>
-        {/* SKILL GROUPS: highlighted group gets accent-blue pills.
+        {/* SKILL GROUPS: every group gets the same accent-blue outline pills.
             Hover: green with white text + a wiggle (none with reduced motion); not clickable */}
         <div className="grid gap-[18px]">
           {skillSet.map((set) => (
@@ -40,11 +40,7 @@ const About = () => {
                 {set.items.map((item) => (
                   <li
                     key={item}
-                    className={`cursor-default rounded-full border px-2.5 py-2 font-mono text-[13px] leading-none font-medium transition-colors duration-200 hover:border-cta hover:bg-cta hover:text-white motion-safe:hover:animate-wiggle ${
-                      set.highlight
-                        ? "border-accent text-accent"
-                        : "border-line text-muted"
-                    }`}
+                    className="cursor-default rounded-full border border-accent px-2.5 py-2 font-mono text-[13px] leading-none font-medium text-accent transition-colors duration-200 hover:border-cta hover:bg-cta hover:text-white motion-safe:hover:animate-wiggle"
                   >
                     {item}
                   </li>

@@ -1,9 +1,7 @@
 // Skill groups for the About section (rendered by components/About.jsx).
-// highlight: true shows that group's pills in accent blue.
 const skillSet = [
   {
     group: "Front-end",
-    highlight: true,
     items: ["HTML & CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS"],
   },
   {
