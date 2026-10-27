@@ -4,7 +4,7 @@ const heroData = {
 	greeting: "Hey There,",
 	name: "Akbar",
 	desc: "I build fast, polished front ends with JavaScript, React and TypeScript, and add AI-powered features with Python and FastAPI when a project needs it.",
-	watermark: "UI → AI\nApplication Engineer", // faint text behind the hero text; \n starts the second line
+	watermark: "UI → AI Application Engineer", // faint text behind the hero text, always on one line
 	primary: { url: "#contact", title: "Hire Me" },
 	secondary: { url: "#work", title: "See my work" },
 	gourdButton: { open: "What's inside? Open me", close: "Back into the gourd" }, // button on the hero gourd (components/HeroGourd.jsx)

@@ -12,7 +12,7 @@ const Hero = () => {
       {/* GRID: text | gourd on desktop, stacked at ≤860px; items sit on the bottom edge */}
       <header className="card-section relative z-[1] grid grid-cols-[1.05fr_.95fr] items-end gap-8 pt-12 max-[860px]:grid-cols-1">
         {/* HERO TEXT: isolate keeps the watermark (z-index -1) behind the text but inside this box */}
-        <div className="relative isolate grid min-w-0 content-center gap-6 self-center pb-[clamp(100px,12vw,150px)] max-[860px]:pb-[84px]">
+        <div className="relative isolate grid min-w-0 content-center gap-6 self-center pb-[clamp(64px,2.95vw_+_40px,80px)] max-[860px]:pb-[clamp(48px,5.3vw_+_32px,72px)]">
           {/* ROLE PILL: blue pill so recruiters spot the roles first; the green dot with a light inner ring is an "available" status light.
               Smaller text where the text column is narrow (two columns below 960px, phones below 640px), so the roles stay on one line */}
           <span className="inline-flex items-center gap-2.5 justify-self-start rounded-full border border-[#C3D0EE] bg-accent-soft py-2 pr-4 pl-2.5 font-mono text-[13px] leading-[1.2] font-semibold tracking-[.08em] text-accent uppercase max-[960px]:text-xs max-sm:gap-2 max-sm:pl-2 max-sm:text-[11px] max-sm:tracking-[.02em]">
@@ -77,10 +77,12 @@ const Hero = () => {
               {heroData.secondary.title}
             </a>
           </div>
-          {/* WATERMARK: faint big text behind the bottom of the text column; whitespace-pre keeps its two lines */}
+          {/* WATERMARK: faint big text behind the bottom of the text column, on one line. The phrase is
+              ~13.3em wide at these sizes, so the size follows the column (max ~95% of it): stacked (<860px)
+              the column is nearly the full width, side by side (≥860px) it's about 42% of it */}
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute bottom-[-.1em] left-0 -z-10 font-display text-[clamp(30px,4.3vw,54px)] leading-[.98] font-extrabold tracking-[-.02em] whitespace-pre text-fg/5"
+            className="pointer-events-none absolute bottom-[-.1em] left-0 -z-10 font-display text-[clamp(16px,5.3vw,40px)] leading-[.98] font-extrabold tracking-[-.02em] whitespace-nowrap text-fg/5 min-[860px]:text-[clamp(22px,2.95vw,40px)]"
           >
             {heroData.watermark}
           </span>
