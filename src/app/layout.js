@@ -6,7 +6,10 @@ import PageTransition from "@/components/PageTransition";
 // display cut automatically (font-optical-sizing: auto); next/font only allows axes on the variable font
 const display = Bricolage_Grotesque({ subsets: ["latin"], axes: ["opsz"], variable: "--nf-display" });
 const body = Instrument_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--nf-body" });
-const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--nf-mono" });
+// adjustFontFallback: false: next/font's automatic fallback for this font is Arial scaled up 135%, far wider than
+// JetBrains Mono in capitals, so the uppercase hero role pill wrapped to two lines on phones until the font loaded
+// (layout shift). Without it, the system monospace fonts in globals.css (--font-mono) are the fallback; they're about as wide.
+const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--nf-mono", adjustFontFallback: false });
 
 export const metadata = {
 	title: "Magic Gourd",
