@@ -122,16 +122,18 @@ const HeroGourd = () => {
   };
 
   return (
-    <div className="flex w-[min(100%,480px)] max-w-full flex-col self-end justify-self-center max-[860px]:w-[min(100%,380px)]">
-      {/* OPEN / CLOSE BUTTON: on its own row above the gourd (right-aligned, centered when stacked), so it
-          never covers the lid, which lifts up to ~30 viewBox units above the gourd: the 10% margin (of the
-          gourd's width, 36 units) keeps that space free at every size. aria-disabled instead of disabled during
-          the animation, so keyboard focus stays on it. Hidden with reduced motion, where the gourd is always open */}
+    <div className="relative flex w-[min(100%,480px)] max-w-full flex-col self-end justify-self-center max-[860px]:w-[min(100%,380px)]">
+      {/* OPEN / CLOSE BUTTON: never covers the lid, which lifts up to ~30 viewBox units above the gourd.
+          Desktops (≥1024px): at the gourd's top-left, its right edge just before the resting lid (x 157 of 360 =
+          43.6%), so it may reach into the gap beside the gourd; the lid lifts up and to the right, away from it.
+          Narrower (where it would reach the hero text): on its own row above the gourd (right-aligned, centered when stacked); the 10% margin (of the
+          gourd's width, 36 units) keeps the lid's space free. aria-disabled instead of disabled during the
+          animation, so keyboard focus stays on it. Hidden with reduced motion, where the gourd is always open */}
       <button
         type="button"
         onClick={toggle}
         aria-disabled={busy}
-        className="mb-[10%] inline-flex cursor-pointer items-center gap-2 self-end rounded-full border border-line bg-panel px-3.5 py-[9px] font-body text-sm leading-none font-semibold text-cta shadow-[0_8px_20px_-12px_rgba(15,26,46,.4)] transition-[transform,background-color] duration-150 hover:bg-[#EEF5F1] focus-visible:outline-cta active:scale-[.96] aria-disabled:cursor-default aria-disabled:opacity-55 aria-disabled:hover:bg-panel aria-disabled:active:scale-100 motion-reduce:hidden max-[860px]:self-center"
+        className="mb-[10%] inline-flex cursor-pointer items-center gap-2 self-end rounded-full border border-line bg-panel px-3.5 py-[9px] font-body text-sm leading-none font-semibold whitespace-nowrap text-cta shadow-[0_8px_20px_-12px_rgba(15,26,46,.4)] transition-[transform,background-color] duration-150 hover:bg-[#EEF5F1] focus-visible:outline-cta active:scale-[.96] aria-disabled:cursor-default aria-disabled:opacity-55 aria-disabled:hover:bg-panel aria-disabled:active:scale-100 motion-reduce:hidden max-[860px]:self-center lg:absolute lg:top-0 lg:right-[calc(56.4%+6px)] lg:z-[3] lg:mb-0"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
           <path
