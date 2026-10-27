@@ -30,6 +30,13 @@ const Navbar = () => {
       // scroll-spy only on home: /experience and /projects reuse the ids #experience / #work,
       // and their nav links lead back to home, so nothing should be underlined there
       if (!navRef.current || !isHome) return;
+      // while a #section link glides there (utils/scrollToHash.js), underline the destination right away
+      // instead of every section passed on the way; the last scroll event when it arrives clears this
+      const target = document.documentElement.dataset.scrollTarget;
+      if (target) {
+        setActive(links.some((link) => link.url === target) ? target : null);
+        return;
+      }
       // getBoundingClientRect calculates the element's current position each time you call it. 
       const mark = navRef.current.getBoundingClientRect().bottom + 120;
       let current = null;

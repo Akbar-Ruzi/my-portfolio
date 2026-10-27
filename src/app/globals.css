@@ -264,6 +264,12 @@
 		outline-offset: 3px;
 		border-radius: 4px;
 	}
+
+	/* a #section link moves focus to its section (utils/scrollToHash.js), so Tab continues from there;
+	   the section itself isn't a control, so no ring around it */
+	section[tabindex="-1"] {
+		outline: none;
+	}
 }
 
 @layer components {
