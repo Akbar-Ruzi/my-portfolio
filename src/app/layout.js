@@ -1,5 +1,6 @@
 import { Bricolage_Grotesque, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import PageTransition from "@/components/PageTransition";
 
 // variable font with the optical-size axis (opsz), as in the new design: big headings get the condensed
 // display cut automatically (font-optical-sizing: auto); next/font only allows axes on the variable font
@@ -19,7 +20,10 @@ export default function RootLayout({ children }) {
 		// suppressHydrationWarning: some browsers (e.g. Chrome on iPhone) add attributes to <html> before
 		// React loads; this ignores attribute differences on this one tag only, not on its children
 		<html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`} suppressHydrationWarning>
-			<body>{children}</body>
+			<body>
+				{children}
+				<PageTransition />
+			</body>
 		</html>
 	);
 }

@@ -9,7 +9,7 @@ export const metadata = {
 
 const ProjectsPage = () => {
 	return (
-		<div className="mx-auto flex max-w-[1240px] flex-col gap-[var(--outer)]">
+		<div className="page mx-auto flex max-w-[1240px] flex-col gap-[var(--outer)]">
 			<Navbar />
 			<PageHeader
 				back="/#work"
