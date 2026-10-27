@@ -476,15 +476,23 @@
 		}
 	}
 
-	.nav-link.active::after {
+	/* active nav link: underline under the word itself (the span in the link), 2px above the link's bottom edge:
+	   the link's bottom padding is 8px (6px on phones), so the line sits 6px (4px) below the word */
+	.nav-link.active .nav-label::after {
 		content: "";
 		position: absolute;
-		left: 12px;
-		right: 12px;
-		bottom: 2px;
+		left: 0;
+		right: 0;
+		bottom: -6px;
 		height: 2px;
 		border-radius: 2px;
 		background: var(--color-cta);
+	}
+	/* same breakpoint as the nav's phone layout in Navbar.jsx (max-[670px] = narrower than 670px) */
+	@media (width < 670px) {
+		.nav-link.active .nav-label::after {
+			bottom: -4px;
+		}
 	}
 
 	/* page switch (components/PageTransition.jsx): the old page slides out while a thin green bar

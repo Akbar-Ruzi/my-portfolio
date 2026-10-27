@@ -74,7 +74,7 @@ const Navbar = () => {
           : "rounded-t-[20px] border-line shadow-[0_6px_18px_-12px_rgba(120,70,0,.35)]"
       }`}
     >
-      <div className="flex flex-wrap items-center justify-between gap-4 py-3.5 max-[640px]:gap-y-1.5 max-[640px]:py-2.5">
+      <div className="flex flex-wrap items-center justify-between gap-4 py-3.5 max-[670px]:gap-y-1.5 max-[670px]:py-2.5">
         {/* LOGO */}
         {/* home: #top (the Hero); sub-page: "/" opens the home page at the top */}
         <Anchor
@@ -97,18 +97,21 @@ const Navbar = () => {
             Magic <span className="text-accent">Gourd</span>
           </span>
         </Anchor>
-        {/* LINKS */}
-        <ul className="flex flex-wrap gap-1 max-[640px]:order-3 max-[640px]:w-full max-[640px]:justify-center">
+        {/* LINKS: below 670px their own row under the logo (above that, logo + gourd icon, links and
+            Contact Me no longer fit on one row), split into three equal columns,
+            so each link is a third of the row wide (bigger tap area); the active underline sits on
+            the word (.nav-label), so it stays under the word however wide the link is */}
+        <ul className="flex flex-wrap gap-1 max-[670px]:order-3 max-[670px]:grid max-[670px]:w-full max-[670px]:grid-cols-3">
           {links.map((link) => (
             <li key={link.title}>
               <Anchor
                 href={to(link.url)}
                 aria-current={active === link.url ? "true" : undefined}
-                className={`nav-link relative block rounded-md px-3 py-2 text-[15px] font-medium text-muted transition-colors hover:bg-cta/10 hover:text-cta max-[640px]:px-2.5 max-[640px]:py-1.5 ${
+                className={`nav-link block rounded-md px-3 py-2 text-[15px] font-medium text-muted transition-colors hover:bg-cta/10 hover:text-cta max-[670px]:px-2.5 max-[670px]:py-1.5 max-[670px]:text-center ${
                   active === link.url ? "active" : ""
                 }`}
               >
-                {link.title}
+                <span className="nav-label relative inline-block">{link.title}</span>
               </Anchor>
             </li>
           ))}
@@ -116,7 +119,7 @@ const Navbar = () => {
         {/* CONTACT BUTTON */}
         <Anchor
           href={to("#contact")}
-          className="rounded-full bg-cta px-5 py-2.5 text-[15px] font-semibold text-white hover:brightness-110 max-[640px]:px-4 max-[640px]:py-2 max-[640px]:text-sm"
+          className="rounded-full bg-cta px-5 py-2.5 text-[15px] font-semibold text-white hover:brightness-110 max-[670px]:px-4 max-[670px]:py-2 max-[670px]:text-sm"
         >
           Contact Me
         </Anchor>
