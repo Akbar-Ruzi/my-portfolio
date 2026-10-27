@@ -12,8 +12,8 @@ const About = () => {
       <h2 id="about-h" className="mb-7 text-[clamp(28px,4vw,38px)] font-extrabold">
         {summaryData.title}
       </h2>
-      {/* GRID: text | skill groups, stacked at ≤760px */}
-      <div className="grid grid-cols-2 gap-10 max-[760px]:grid-cols-1">
+      {/* GRID: text | skill groups, stacked below 1024px (tablets got two cramped columns) */}
+      <div className="grid grid-cols-2 gap-10 max-lg:grid-cols-1">
         {/* TEXT */}
         <div>
           {summaryData.desc.map((item) => (
