@@ -4,13 +4,13 @@
 // The button opens and closes it; once open, each tech chip shows its own code on the screen.
 // The animations live in globals.css (.gourd)
 import { useEffect, useState } from "react";
-import heroData from "@/utils/heroData";
-import gourdSnippets, { codeColors } from "@/utils/gourdSnippets";
+import heroData from "@/data/hero/heroData";
+import gourdSnippets, { codeColors } from "@/data/hero/gourdSnippets";
 import { playClose, playOpen, playPick } from "@/utils/gourdSounds";
 
 // Skill pills on the gourd's upper bulb; x/y/width place them inside the 360×520 viewBox.
 // dx/dy: where the pill starts (at the neck) relative to its place; d: when it pops out.
-// Each label is also the key of its code in utils/gourdSnippets.js
+// Each label is also the key of its code in data/hero/gourdSnippets.js
 const pills = [
   { label: "Python", x: 117.1, y: 103, width: 56, dx: 34.9, dy: -74, d: 0.85 },
   { label: "FastAPI", x: 180.7, y: 103, width: 62, dx: -31.7, dy: -74, d: 0.97 },

@@ -17,7 +17,7 @@
 	--font-body: var(--nf-body), "Segoe UI", system-ui, sans-serif;
 	--font-mono: var(--nf-mono), ui-monospace, Menlo, Consolas, monospace;
 
-	/* closed hero gourd (components/HeroGourd.jsx): the "Magic Gourd" title floats,
+	/* closed hero gourd (components/hero/HeroGourd.jsx): the "Magic Gourd" title floats,
 	   its subtitle pulses, and the sparks twinkle */
 	--animate-magic-float: magic-float 3.4s ease-in-out infinite;
 	--animate-magic-pulse: magic-pulse 3.4s ease-in-out infinite;
@@ -213,7 +213,7 @@
 		scroll-padding-top: 7rem;
 	}
 
-	/* no page scroll behind an open modal (components/Dialog.jsx) */
+	/* no page scroll behind an open modal (components/shared/Dialog.jsx) */
 	html:has(dialog[open]) {
 		overflow: hidden;
 	}
@@ -276,7 +276,7 @@
 	.nav-link.active {
 		color: var(--color-cta);
 	}
-	/* HERO GOURD (components/HeroGourd.jsx): data-state is closed → opening → open → closing → closed.
+	/* HERO GOURD (components/hero/HeroGourd.jsx): data-state is closed → opening → open → closing → closed.
 	   Opening: the lid lifts and tilts, the chips pop out of the neck one by one (--d = delay,
 	   --dx/--dy = start offset at the neck), the code screen grows in, then the code lines fly in.
 	   Closing plays the same animations in reverse. With reduced motion none of this applies,
@@ -371,7 +371,7 @@
 		}
 	}
 
-	/* HERO CARAVAN (components/Caravan.jsx): a strip at the bottom of the hero card. The walker crosses it
+	/* HERO CARAVAN (components/hero/Caravan.jsx): a strip at the bottom of the hero card. The walker crosses it
 	   in 34s (100cqw = the strip's width); legs step, bodies bob, the hand gourd swings, the donkey nods,
 	   the bubble pops up every 7s. With reduced motion the pair stands still in the middle, bubble shown */
 	.caravan {
@@ -495,7 +495,7 @@
 		}
 	}
 
-	/* page switch (components/PageTransition.jsx): the old page slides out while a thin green bar
+	/* page switch (components/shared/PageTransition.jsx): the old page slides out while a thin green bar
 	   fills the top, then the new page slides in (nav stays put; main and footer follow a little later).
 	   The bar grows with scaleX instead of v16's width, so only transform/opacity animate.
 	   Shorter than v16 (out 0.15s, in 0.35s; v16: 0.28s / 0.55s) so phones don't wait on it */

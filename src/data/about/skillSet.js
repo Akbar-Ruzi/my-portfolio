@@ -1,4 +1,4 @@
-// Skill groups for the About section (rendered by components/About.jsx).
+// Skill groups for the About section (rendered by components/about/About.jsx).
 const skillSet = [
   {
     group: "Front-end",

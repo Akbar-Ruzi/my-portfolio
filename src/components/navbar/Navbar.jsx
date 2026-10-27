@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import links from "@/utils/links";
+import links from "@/data/navbar/links";
 
 const Navbar = () => {
   // On a sub-page (/experience, /projects) the home sections aren't there,

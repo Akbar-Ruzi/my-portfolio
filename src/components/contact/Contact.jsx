@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import contactData from "@/utils/contactData";
-import socials from "@/utils/socials";
+import contactData from "@/data/contact/contactData";
+import socials from "@/data/contact/socials";
 
 const fieldClass =
   "w-full rounded-xl border border-[#E6E3DA] bg-[#F5F4F0] px-3.5 py-[13px] text-base text-fg transition-colors placeholder:text-[#8C93A0] focus:border-cta focus:bg-white focus:ring-[3px] focus:ring-cta/20 focus:outline-none aria-invalid:border-[#C2410C] aria-invalid:bg-[#FFF7F3]";

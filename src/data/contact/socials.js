@@ -1,4 +1,4 @@
-// Social links shown as pills in the Contact section (rendered by components/Contact.jsx).
+// Social links shown as pills in the Contact section (rendered by components/contact/Contact.jsx).
 // bg: the brand color as a Tailwind class (written out in full so Tailwind generates it).
 const socials = [
 	{ name: "GitHub", url: "https://github.com/Akbar-Ruzi?tab=repositories", bg: "bg-[#1F2328]" },

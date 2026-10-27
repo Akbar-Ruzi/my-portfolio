@@ -1,6 +1,6 @@
-import projects from "@/utils/projects";
-import ProjectCard from "@/components/ProjectCard";
-import MoreLink from "@/components/MoreLink";
+import projects from "@/data/projects/projects";
+import ProjectCard from "@/components/projects/ProjectCard";
+import MoreLink from "@/components/shared/MoreLink";
 
 // home (preview): the first projects + "View all projects →".
 // /projects: every project; the page header is the visible title, so the h2 is for screen readers only.

@@ -1,4 +1,4 @@
-// About section copy (rendered by components/About.jsx).
+// About section copy (rendered by components/about/About.jsx).
 // Wrap words in **double asterisks** to show them in bold.
 const summaryData = {
 	title: 'About Me',

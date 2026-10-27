@@ -3,7 +3,7 @@
 import { useId, useRef } from "react";
 
 // Temporary: stands in for a project's Live demo / Code link while its url is still "".
-// Remove this file once every project in utils/projects.js has both links (see plan.md, Future plan).
+// Remove this file once every project in data/projects/projects.js has both links (see plan.md, Future plan).
 const Dialog = ({ label, what, project, className }) => {
   const dialogRef = useRef(null);
   const titleId = useId();

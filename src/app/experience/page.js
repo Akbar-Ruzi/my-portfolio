@@ -1,7 +1,7 @@
-import Navbar from "@/components/Navbar";
-import PageHeader from "@/components/PageHeader";
-import Experience from "@/components/Experience";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/navbar/Navbar";
+import PageHeader from "@/components/shared/PageHeader";
+import Experience from "@/components/experience/Experience";
+import Footer from "@/components/footer/Footer";
 
 export const metadata = {
 	title: "Experience · Magic Gourd",

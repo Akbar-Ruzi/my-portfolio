@@ -1,4 +1,4 @@
-// Hero gourd sounds (components/HeroGourd.jsx), made with Web Audio, so there are no audio files.
+// Hero gourd sounds (components/hero/HeroGourd.jsx), made with Web Audio, so there are no audio files.
 // Browsers only allow audio after a user gesture, so call these from a click handler
 
 let ctx;

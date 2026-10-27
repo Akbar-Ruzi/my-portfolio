@@ -1,5 +1,5 @@
-import Dialog from "@/components/Dialog";
-import Tags from "@/components/Tags";
+import Dialog from "@/components/shared/Dialog";
+import Tags from "@/components/shared/Tags";
 
 // below 1024px (tablet + phone) both links become equal-width pills that fill the row
 const demoClass = "rounded-full bg-cta px-3.5 py-2 text-center text-white hover:brightness-110";

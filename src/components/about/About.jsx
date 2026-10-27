@@ -1,5 +1,5 @@
-import summaryData from "@/utils/summaryData";
-import skillSet from "@/utils/skillSet";
+import summaryData from "@/data/about/summaryData";
+import skillSet from "@/data/about/skillSet";
 import withBold from "@/utils/withBold";
 
 const About = () => {

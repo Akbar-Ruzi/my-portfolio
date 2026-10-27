@@ -14,7 +14,7 @@ Akbar Ruzi's personal portfolio: a single-page site with Hero, About, Experience
 ```bash
 npm install
 cp .env.example .env              # then fill in the EmailJS ids (see "Contact form setup")
-# create src/utils/experiences.js (see "Experience data")
+# create src/data/experience/experiences.js (see "Experience data")
 npm run dev
 ```
 
@@ -32,20 +32,22 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ```
 src/
   app/          layout.js (fonts, metadata), page.js (puts the sections together), globals.css
-  components/   one PascalCase .jsx file per section or piece (Navbar, Hero, About, Experience, Projects, Contact, ...)
-  utils/        the content each section renders (heroData.js, projects.js, contactData.js, ...)
+  components/   one folder per section (navbar/, hero/, about/, experience/, projects/, contact/, footer/),
+                plus shared/ for pieces used by more than one section (Tags, MoreLink, PageHeader, Dialog, ...)
+  data/         the content each section renders, in the same section folders (hero/heroData.js, projects/projects.js, ...)
+  utils/        small helper functions (withBold.jsx, gourdSounds.js)
 ```
 
-Most text changes happen in `src/utils/`, not in the components.
+Most text changes happen in `src/data/`, not in the components.
 
-## Experience data (`src/utils/experiences.js`)
+## Experience data (`src/data/experience/experiences.js`)
 
-The Experience timeline reads from `src/utils/experiences.js`. That file holds personal career details, so it is listed in `.gitignore` and is **not** in this repository.
+The Experience timeline reads from `src/data/experience/experiences.js`. That file holds personal career details, so it is listed in `.gitignore` and is **not** in this repository.
 
-After cloning, create `src/utils/experiences.js` yourself, or `npm run dev` / `npm run build` will fail with "Module not found: Can't resolve '@/utils/experiences'". Start from this mock data:
+After cloning, create `src/data/experience/experiences.js` yourself, or `npm run dev` / `npm run build` will fail with "Module not found: Can't resolve '@/data/experience/experiences'". Start from this mock data:
 
 ```js
-// Experience timeline, newest first (rendered by components/Experience.jsx).
+// Experience timeline, newest first (rendered by components/experience/Experience.jsx).
 // Each entry has either `bullets` (a list) or `summary` (one paragraph).
 // Wrap words in **double asterisks** to show them in bold.
 // dot: timeline dot color; the design cycles green, orange, yellow.
@@ -95,7 +97,7 @@ The home page shows the first 4 entries with a "View full experience" button; `/
 
 ## Contact form setup (EmailJS)
 
-The contact form (`src/components/Contact.jsx`) sends messages with [EmailJS](https://www.emailjs.com) through the `@emailjs/browser` package, so no backend is needed. It reads three ids from environment variables. Without them, the form shows its error message instead of sending.
+The contact form (`src/components/contact/Contact.jsx`) sends messages with [EmailJS](https://www.emailjs.com) through the `@emailjs/browser` package, so no backend is needed. It reads three ids from environment variables. Without them, the form shows its error message instead of sending.
 
 1. **Account:** sign up at [emailjs.com](https://www.emailjs.com) and open the [dashboard](https://dashboard.emailjs.com).
 2. **Service ID:** go to **Email Services** → **Add New Service**, pick your provider (e.g. Gmail), connect the inbox that should receive messages, and click **Create Service**. Copy its **Service ID**.
@@ -130,4 +132,4 @@ The contact form (`src/components/Contact.jsx`) sends messages with [EmailJS](ht
 Before building on a host:
 
 - Add the three `NEXT_PUBLIC_` EmailJS variables in the host's settings. They are inlined at build time, so rebuild after changing them.
-- Provide `src/utils/experiences.js`. It is gitignored, so a build from the repository alone fails without it.
+- Provide `src/data/experience/experiences.js`. It is gitignored, so a build from the repository alone fails without it.

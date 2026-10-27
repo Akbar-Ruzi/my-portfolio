@@ -1,7 +1,7 @@
-import Navbar from "@/components/Navbar";
-import PageHeader from "@/components/PageHeader";
-import Projects from "@/components/Projects";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/navbar/Navbar";
+import PageHeader from "@/components/shared/PageHeader";
+import Projects from "@/components/projects/Projects";
+import Footer from "@/components/footer/Footer";
 
 export const metadata = {
 	title: "Projects · Magic Gourd",

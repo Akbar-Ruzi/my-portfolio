@@ -1,4 +1,4 @@
-// Code shown on the hero gourd's screen (components/HeroGourd.jsx), one snippet per tech chip.
+// Code shown on the hero gourd's screen (components/hero/HeroGourd.jsx), one snippet per tech chip.
 // Each line is a list of [text, color] parts; [] is an empty line. Leading spaces indent the line.
 // Colors: k keyword, f function, s string, t plain text, c comment
 export const codeColors = { k: "#8FB0FF", f: "#C9A2FF", s: "#F5B072", t: "#E6ECF7", c: "#6E7D96" };

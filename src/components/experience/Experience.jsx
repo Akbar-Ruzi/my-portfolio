@@ -1,7 +1,7 @@
-import experiences from "@/utils/experiences";
+import experiences from "@/data/experience/experiences";
 import withBold from "@/utils/withBold";
-import Tags from "@/components/Tags";
-import MoreLink from "@/components/MoreLink";
+import Tags from "@/components/shared/Tags";
+import MoreLink from "@/components/shared/MoreLink";
 
 // home (preview): the newest entries + "View full experience →".
 // /experience: every entry; the page header is the visible title, so the h2 is for screen readers only.

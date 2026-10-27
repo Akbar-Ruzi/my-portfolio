@@ -1,4 +1,4 @@
-// "What I've Built" cards (rendered by components/Projects.jsx), in display order.
+// "What I've Built" cards (rendered by components/projects/Projects.jsx), in display order.
 // kind: small label above the title. tags: tech chips.
 // desc: keep it to about 3 lines on the card (~170 characters).
 // demo / code: links; leave "" when there is none (the button then opens a "not ready yet" dialog).

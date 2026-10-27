@@ -5,7 +5,7 @@
 // alternates the messages in heroData.caravan. Decorative only. The animations live in globals.css (.caravan);
 // they pause while the strip is off screen or the tab is hidden, and are off with reduced motion
 import { useEffect, useRef, useState } from "react";
-import heroData from "@/utils/heroData";
+import heroData from "@/data/hero/heroData";
 
 // one pass: from 330px left of the strip to 20px past its right edge, in 34s
 const WALK_SECONDS = 34;

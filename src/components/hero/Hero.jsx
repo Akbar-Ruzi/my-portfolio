@@ -1,6 +1,6 @@
-import heroData from "@/utils/heroData";
-import HeroGourd from "@/components/HeroGourd";
-import Caravan from "@/components/Caravan";
+import heroData from "@/data/hero/heroData";
+import HeroGourd from "@/components/hero/HeroGourd";
+import Caravan from "@/components/hero/Caravan";
 
 const Hero = () => {
   return (

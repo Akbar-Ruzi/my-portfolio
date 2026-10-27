@@ -1,4 +1,4 @@
-// Contact section copy (rendered by components/Contact.jsx)
+// Contact section copy (rendered by components/contact/Contact.jsx)
 const contactData = {
 	label: "Contact",
 	title: "Let's build something together.",

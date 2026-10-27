@@ -41,7 +41,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 # Personal content kept out of git (see README: "Experience data")
-src/utils/experiences.js
+src/data/experience/experiences.js
 # Local design references and notes (not committed)
 design/
 plan.md
