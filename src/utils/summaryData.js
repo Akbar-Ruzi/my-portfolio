@@ -16,7 +16,7 @@ const summaryData = {
 			id: 'p3'
 		},
 		{
-			p: "Based in **Maryland**, I'm open to remote, hybrid, and on-site opportunities in front-end, full-stack, and AI application development.",
+			p: "Based in Maryland, I'm open to remote, hybrid, and on-site opportunities in front-end, full-stack, and AI application development.",
 			id: 'p4'
 		}
 	],

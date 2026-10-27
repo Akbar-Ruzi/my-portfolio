@@ -5,7 +5,7 @@ const Footer = () => {
 
   return (
     <footer className="card-section rounded-[20px] bg-panel py-8 text-sm/[1.6] text-muted">
-      © {year} Akbar Ruzi · Magic Gourd
+      © {year} Magic Gourd
     </footer>
   );
 };

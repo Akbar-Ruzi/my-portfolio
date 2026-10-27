@@ -4,7 +4,7 @@ import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-	title: "Projects · Akbar Ruzi",
+	title: "Projects · Magic Gourd",
 };
 
 const ProjectsPage = () => {

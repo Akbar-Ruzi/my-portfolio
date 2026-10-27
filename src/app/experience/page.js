@@ -4,7 +4,7 @@ import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-	title: "Experience · Akbar Ruzi",
+	title: "Experience · Magic Gourd",
 };
 
 const ExperiencePage = () => {
